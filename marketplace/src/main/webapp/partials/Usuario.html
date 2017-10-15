@@ -1,0 +1,115 @@
+<div class="btn-group">
+	<button type="button" class="btn btn-default" ng-click="nuevo()">Nuevo Usuario</button>
+	<button type="button" class="btn btn-default" ng-click="cancelar()">Listar Usuario</button>
+</div>
+				
+<div class="panel panel-primary" ng-hide="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Usuario</div>
+    <div class="panel-body">
+        <table class="resultados table table-striped">
+            <tr>
+                				<th>
+                                    nombre
+                                </th>				<th>
+                                    identificacion
+                                </th>				<th>
+                                    usuario
+                                </th>				<th>
+                                    password
+                                </th>
+								<th>
+				                    rol
+				                </th>
+				<th>
+                    <input class="form-control" ng-model="q"  placeholder="Buscar"/>
+                </th>
+            </tr>
+            <tr dir-paginate="row in lista|filter: q|itemsPerPage:10">
+                		<td>{{row.nombre}}</td>
+                
+                		<td>{{row.identificacion}}</td>
+                
+                		<td>{{row.usuario}}</td>
+                
+                		<td>{{row.password}}</td>
+                
+                
+					<td class="row">{{row.rol.nombre}}</td>              
+				<td class="row">
+                    <button type="button" class="btn btn-default" ng-click="editar(row)">
+                        <span class="glyphicon glyphicon-pencil"></span>Editar
+                    </button>
+					<button type="button" class="btn btn-default" ng-click="eliminar(row)">
+                        <span class="glyphicon glyphicon-remove"></span>Eliminar
+                    </button>
+                </td>
+            </tr>
+        </table>
+		<div dir-pagination-controls></div>
+		<br/>
+    </div>
+</div>
+
+<div class="panel panel-primary" ng-show="panelEditar">
+    <div class="panel-heading">Parametrizaci&oacute;n de Usuario</div>
+    <div class="panel-body">
+        <form role="form" id="formularioEditar">
+            				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.nombre?'error':''">
+                                    <label for="nombre">nombre</label>
+                                    <input id="nombre" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.nombre"
+            							   placeholder="nombre"/>
+                                    <div ng-show="errores.nombre">{{errores.nombre}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.identificacion?'error':''">
+                                    <label for="identificacion">identificacion</label>
+                                    <input id="identificacion" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.identificacion"
+            							   placeholder="identificacion"/>
+                                    <div ng-show="errores.identificacion">{{errores.identificacion}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.usuario?'error':''">
+                                    <label for="usuario">usuario</label>
+                                    <input id="usuario" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.usuario"
+            							   placeholder="usuario"/>
+                                    <div ng-show="errores.usuario">{{errores.usuario}}</div>
+                                </div>
+                            </div>				<div class="row">
+                                <div class="form-group col-md-6" ng-class="errores.password?'error':''">
+                                    <label for="password">password</label>
+                                    <input id="password" 
+                                           class="form-control" 
+            							   type="text"
+                                           ng-model="datosFormulario.password"
+            							   placeholder="password"/>
+                                    <div ng-show="errores.password">{{errores.password}}</div>
+                                </div>
+                            </div> 
+							<div class="row">
+			                    <div class="form-group col-md-6" ng-class="errores.idAseg?'error':''">
+			                        <label>rol</label>
+									<select id="rol" class="form-control" 
+			                            ng-model="datosFormulario.rol"
+			                            ng-options="option.nombre for option in listaRol track by option.id">
+			                    	</select>
+			                        <div ng-show="errores.rol">{{errores.rol}}</div>
+			                    </div>
+			                </div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default" ng-click="guardar()">Aceptar</button>
+                <button type="button" class="btn btn-default" ng-click="cancelar()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
