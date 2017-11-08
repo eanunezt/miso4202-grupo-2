@@ -1,0 +1,62 @@
+<header ng-switch on="$location.path().indexOf('/Usuarios/new') > -1">
+    <h3 ng-switch-when="true">Create a new Usuario</h3>
+    <h3 ng-switch-when="false">View or edit Usuario</h3>
+</header>
+<form id="UsuarioForm" name="UsuarioForm" class="form-horizontal" role="form">
+    
+
+    <div class="form-group" ng-class="{'has-error': UsuarioForm.nombre.$invalid}">
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+        <div id="nombreControls" class="col-sm-10">
+            <input id="nombre" name="nombre" type="text" required ng-maxlength="2147483647" ng-minlength="3" class="form-control" ng-model="usuario.nombre" placeholder="Enter the Usuario Nombre"></input>
+            <span class="help-block error" ng-show="UsuarioForm.nombre.$error.required">required</span> 
+            <span class="help-block error" ng-show="UsuarioForm.nombre.$error.minlength">minimum length is 3</span>
+            <span class="help-block error" ng-show="UsuarioForm.nombre.$error.maxlength">maximum length is 2147483647</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsuarioForm.identificacion.$invalid}">
+        <label for="identificacion" class="col-sm-2 control-label">Identificacion</label>
+        <div id="identificacionControls" class="col-sm-10">
+            <input id="identificacion" name="identificacion" type="text" required ng-maxlength="20" class="form-control" ng-model="usuario.identificacion" placeholder="Enter the Usuario Identificacion"></input>
+            <span class="help-block error" ng-show="UsuarioForm.identificacion.$error.required">required</span> 
+            <span class="help-block error" ng-show="UsuarioForm.identificacion.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsuarioForm.usuario.$invalid}">
+        <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+        <div id="usuarioControls" class="col-sm-10">
+            <input id="usuario" name="usuario" type="text" required ng-maxlength="50" class="form-control" ng-model="usuario.usuario" placeholder="Enter the Usuario Usuario"></input>
+            <span class="help-block error" ng-show="UsuarioForm.usuario.$error.required">required</span> 
+            <span class="help-block error" ng-show="UsuarioForm.usuario.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsuarioForm.password.$invalid}">
+        <label for="password" class="col-sm-2 control-label">Password</label>
+        <div id="passwordControls" class="col-sm-10">
+            <input id="password" name="password" type="text" required ng-maxlength="2000" class="form-control" ng-model="usuario.password" placeholder="Enter the Usuario Password"></input>
+            <span class="help-block error" ng-show="UsuarioForm.password.$error.required">required</span> 
+            <span class="help-block error" ng-show="UsuarioForm.password.$error.maxlength">maximum length is 2000</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UsuarioForm.rol.$invalid}">
+        <label for="rol" class="col-sm-2 control-label">Rol</label>
+        <div id="rolControls" class="col-sm-10">
+        <select id="rol" name="rol" class="form-control" ng-model="usuario.rol" ng-options="r for r in rolList"  >
+            <option value="">Choose a Rol</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveUsuario" name="saveUsuario" class="btn btn-primary" ng-disabled="isClean() || UsuarioForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteUsuario" name="deleteUsuario" class="btn btn-danger" ng-show="usuario.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

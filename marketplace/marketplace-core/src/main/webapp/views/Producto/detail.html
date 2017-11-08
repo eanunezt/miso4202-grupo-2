@@ -1,0 +1,58 @@
+<header ng-switch on="$location.path().indexOf('/Productos/new') > -1">
+    <h3 ng-switch-when="true">Create a new Producto</h3>
+    <h3 ng-switch-when="false">View or edit Producto</h3>
+</header>
+<form id="ProductoForm" name="ProductoForm" class="form-horizontal" role="form">
+    
+
+    <div class="form-group" ng-class="{'has-error': ProductoForm.nombre.$invalid}">
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+        <div id="nombreControls" class="col-sm-10">
+            <input id="nombre" name="nombre" type="text" required class="form-control" ng-model="producto.nombre" placeholder="Enter the Producto Nombre"></input>
+            <span class="help-block error" ng-show="ProductoForm.nombre.$error.required">required</span> 
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductoForm.valor.$invalid}">
+        <label for="valor" class="col-sm-2 control-label">Valor</label>
+        <div id="valorControls" class="col-sm-10">
+            <input id="valor" name="valor" type="number" required class="form-control" ng-model="producto.valor" placeholder="Enter the Producto Valor"></input>
+            <span class="help-block error" ng-show="ProductoForm.valor.$error.required">required</span> 
+            <span class="help-block error" ng-show="ProductoForm.valor.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductoForm.urlImagen.$invalid}">
+        <label for="urlImagen" class="col-sm-2 control-label">Url Imagen</label>
+        <div id="urlImagenControls" class="col-sm-10">
+            <input id="urlImagen" name="urlImagen" type="text" class="form-control" ng-model="producto.urlImagen" placeholder="Enter the Producto Url Imagen"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductoForm.proveedor.$invalid}">
+        <label for="proveedor" class="col-sm-2 control-label">Proveedor</label>
+        <div id="proveedorControls" class="col-sm-10">
+        <select id="proveedor" name="proveedor" class="form-control" ng-model="proveedorSelection" ng-options="p.text for p in proveedorSelectionList"  >
+            <option value="">Choose a Proveedor</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': ProductoForm.categoria.$invalid}">
+        <label for="categoria" class="col-sm-2 control-label">Categoria</label>
+        <div id="categoriaControls" class="col-sm-10">
+        <select id="categoria" name="categoria" class="form-control" ng-model="categoriaSelection" ng-options="c.text for c in categoriaSelectionList"  >
+            <option value="">Choose a Categoria</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveProducto" name="saveProducto" class="btn btn-primary" ng-disabled="isClean() || ProductoForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteProducto" name="deleteProducto" class="btn btn-danger" ng-show="producto.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

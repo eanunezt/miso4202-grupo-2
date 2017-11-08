@@ -1,10 +1,12 @@
-Proyecto Web marketplace
+Proyecto Web marketplace-parent
 ========================
 Author: Grupo 2 - 201720_MISO4204_01
 Technologies: HTML5, ANGULAR JS, JPA, EJB, JAX-RS
+
 Summary: Proyecto CORE para una Línea de Productos de Software 
 
 Plataforma: WildFly
+
 Source: https://github.com/MISO4204-201720/grupo-2.git
 
 Descripción
@@ -102,4 +104,4 @@ La aplicación se ejecutará en la siguiente URL: <http://localhost:8080/marketp
 Remover el despliegue de la aplciación
 --------------------
 
-1. Borre earchivo  'marketplace.war' de la ruta JBOSS_HOME\standalone\deployments.
+1. Borre el archivo  'marketplace.war' de la ruta JBOSS_HOME\standalone\deployments.

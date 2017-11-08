@@ -1,0 +1,96 @@
+<div class="form-horizontal">
+    <h3>Create a new Usuario</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/Usuarios/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for Usuarios</h3>
+    <form id="UsuarioSearch" class="form-horizontal">
+        
+
+    <div class="form-group">
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+        <div class="col-sm-10">
+            <input id="nombre" name="nombre" class="form-control" type="text" ng-model="search.nombre" placeholder="Enter the Usuario Nombre"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="identificacion" class="col-sm-2 control-label">Identificacion</label>
+        <div class="col-sm-10">
+            <input id="identificacion" name="identificacion" class="form-control" type="text" ng-model="search.identificacion" placeholder="Enter the Usuario Identificacion"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="usuario" class="col-sm-2 control-label">Usuario</label>
+        <div class="col-sm-10">
+            <input id="usuario" name="usuario" class="form-control" type="text" ng-model="search.usuario" placeholder="Enter the Usuario Usuario"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">Password</label>
+        <div class="col-sm-10">
+            <input id="password" name="password" class="form-control" type="text" ng-model="search.password" placeholder="Enter the Usuario Password"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="rol" class="col-sm-2 control-label">Rol</label>
+        <div class="col-sm-10">
+            <select id="rol" name="rol" class="form-control" ng-model="search.rol" ng-options="r as r for r in rolList">
+                <option value="">Choose a Rol</option>
+            </select>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Identificacion</th>
+                    <th>Usuario</th>
+                    <th>Password</th>
+                    <th>Rol</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in filteredResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/Usuarios/edit/{{result.id}}">{{result.nombre}}</a></td>
+                    <td><a href="#/Usuarios/edit/{{result.id}}">{{result.identificacion}}</a></td>
+                    <td><a href="#/Usuarios/edit/{{result.id}}">{{result.usuario}}</a></td>
+                    <td><a href="#/Usuarios/edit/{{result.id}}">{{result.password}}</a></td>
+                    <td><a href="#/Usuarios/edit/{{result.id}}">{{result.rol}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

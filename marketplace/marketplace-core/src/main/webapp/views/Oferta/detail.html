@@ -1,0 +1,43 @@
+<header ng-switch on="$location.path().indexOf('/Oferta/new') > -1">
+    <h3 ng-switch-when="true">Create a new Oferta</h3>
+    <h3 ng-switch-when="false">View or edit Oferta</h3>
+</header>
+<form id="OfertaForm" name="OfertaForm" class="form-horizontal" role="form">
+    
+
+    <div class="form-group" ng-class="{'has-error': OfertaForm.nombre.$invalid}">
+        <label for="nombre" class="col-sm-2 control-label">Nombre</label>
+        <div id="nombreControls" class="col-sm-10">
+            <input id="nombre" name="nombre" type="text" required ng-maxlength="50" class="form-control" ng-model="oferta.nombre" placeholder="Enter the Oferta Nombre"></input>
+            <span class="help-block error" ng-show="OfertaForm.nombre.$error.required">required</span> 
+            <span class="help-block error" ng-show="OfertaForm.nombre.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfertaForm.valor.$invalid}">
+        <label for="valor" class="col-sm-2 control-label">Valor</label>
+        <div id="valorControls" class="col-sm-10">
+            <input id="valor" name="valor" type="number" required class="form-control" ng-model="oferta.valor" placeholder="Enter the Oferta Valor"></input>
+            <span class="help-block error" ng-show="OfertaForm.valor.$error.required">required</span> 
+            <span class="help-block error" ng-show="OfertaForm.valor.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OfertaForm.producto.$invalid}">
+        <label for="producto" class="col-sm-2 control-label">Producto</label>
+        <div id="productoControls" class="col-sm-10">
+        <select id="producto" name="producto" class="form-control" ng-model="productoSelection" ng-options="p.text for p in productoSelectionList"  >
+            <option value="">Choose a Producto</option>
+        </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveOferta" name="saveOferta" class="btn btn-primary" ng-disabled="isClean() || OfertaForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteOferta" name="deleteOferta" class="btn btn-danger" ng-show="oferta.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>
