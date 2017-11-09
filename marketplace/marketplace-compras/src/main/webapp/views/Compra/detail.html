@@ -26,28 +26,27 @@
     <div class="form-group" ng-class="{'has-error': CompraForm.fechaCompra.$invalid}">
         <label for="fechaCompra" class="col-sm-2 control-label">Fecha Compra</label>
         <div id="fechaCompraControls" class="col-sm-10">
-            <datetime id="fechaCompra" name="fechaCompra" required ng-model="compra.fechaCompra" placeholder="Enter the Compra Fecha Compra"></datetime>
+            <date id="fechaCompra" name="fechaCompra" required ng-model="compra.fechaCompra" placeholder="Enter the Compra Fecha Compra"></date>
             <span class="help-block error" ng-show="CompraForm.fechaCompra.$error.required">required</span> 
-            <span class="help-block error" ng-show="CompraForm.fechaCompra.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+            <span class="help-block error" ng-show="CompraForm.fechaCompra.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': CompraForm.producto.$invalid}">
-        <label for="producto" class="col-sm-2 control-label">Producto</label>
-        <div id="productoControls" class="col-sm-10">
-        <select id="producto" name="producto" class="form-control" ng-model="productoSelection" ng-options="p.text for p in productoSelectionList" required >
-            <option value="">Choose a Producto</option>
-        </select>
-        <span class="help-block error" ng-show="CompraForm.producto.$error.required">required</span> 
+    <div class="form-group" ng-class="{'has-error': CompraForm.productos.$invalid}">
+        <label for="productos" class="col-sm-2 control-label">Productos</label>
+        <div id="productosControls" class="col-sm-10">
+            <select id="productos" name="productos" multiple class="form-control" ng-model="productosSelection" ng-options="p.text for p in productosSelectionList">
+                <option value="">Choose a Productos</option>
+            </select>
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': CompraForm.oferta.$invalid}">
-        <label for="oferta" class="col-sm-2 control-label">Oferta</label>
-        <div id="ofertaControls" class="col-sm-10">
-        <select id="oferta" name="oferta" class="form-control" ng-model="ofertaSelection" ng-options="o.text for o in ofertaSelectionList"  >
-            <option value="">Choose a Oferta</option>
-        </select>
+    <div class="form-group" ng-class="{'has-error': CompraForm.ofertas.$invalid}">
+        <label for="ofertas" class="col-sm-2 control-label">Ofertas</label>
+        <div id="ofertasControls" class="col-sm-10">
+            <select id="ofertas" name="ofertas" multiple class="form-control" ng-model="ofertasSelection" ng-options="o.text for o in ofertasSelectionList">
+                <option value="">Choose a Ofertas</option>
+            </select>
         </div>
     </div>
 

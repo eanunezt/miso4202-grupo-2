@@ -10,7 +10,7 @@ angular.module('marketplace-compras').controller('EditCompraController', functio
             self.original = data;
             $scope.compra = new CompraResource(self.original);
             ProductoResource.queryAll(function(items) {
-                $scope.productoSelectionList = $.map(items, function(item) {
+                $scope.productosSelectionList = $.map(items, function(item) {
                     var wrappedObject = {
                         id : item.id
                     };
@@ -18,16 +18,20 @@ angular.module('marketplace-compras').controller('EditCompraController', functio
                         value : item.id,
                         text : item.id
                     };
-                    if($scope.compra.producto && item.id == $scope.compra.producto.id) {
-                        $scope.productoSelection = labelObject;
-                        $scope.compra.producto = wrappedObject;
-                        self.original.producto = $scope.compra.producto;
+                    if($scope.compra.productos){
+                        $.each($scope.compra.productos, function(idx, element) {
+                            if(item.id == element.id) {
+                                $scope.productosSelection.push(labelObject);
+                                $scope.compra.productos.push(wrappedObject);
+                            }
+                        });
+                        self.original.productos = $scope.compra.productos;
                     }
                     return labelObject;
                 });
             });
             OfertaResource.queryAll(function(items) {
-                $scope.ofertaSelectionList = $.map(items, function(item) {
+                $scope.ofertasSelectionList = $.map(items, function(item) {
                     var wrappedObject = {
                         id : item.id
                     };
@@ -35,10 +39,14 @@ angular.module('marketplace-compras').controller('EditCompraController', functio
                         value : item.id,
                         text : item.id
                     };
-                    if($scope.compra.oferta && item.id == $scope.compra.oferta.id) {
-                        $scope.ofertaSelection = labelObject;
-                        $scope.compra.oferta = wrappedObject;
-                        self.original.oferta = $scope.compra.oferta;
+                    if($scope.compra.ofertas){
+                        $.each($scope.compra.ofertas, function(idx, element) {
+                            if(item.id == element.id) {
+                                $scope.ofertasSelection.push(labelObject);
+                                $scope.compra.ofertas.push(wrappedObject);
+                            }
+                        });
+                        self.original.ofertas = $scope.compra.ofertas;
                     }
                     return labelObject;
                 });
@@ -89,16 +97,26 @@ angular.module('marketplace-compras').controller('EditCompraController', functio
         $scope.compra.$remove(successCallback, errorCallback);
     };
     
-    $scope.$watch("productoSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.compra.producto = {};
-            $scope.compra.producto.id = selection.value;
+    $scope.productosSelection = $scope.productosSelection || [];
+    $scope.$watch("productosSelection", function(selection) {
+        if (typeof selection != 'undefined' && $scope.compra) {
+            $scope.compra.productos = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.id = selectedItem.value;
+                $scope.compra.productos.push(collectionItem);
+            });
         }
     });
-    $scope.$watch("ofertaSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.compra.oferta = {};
-            $scope.compra.oferta.id = selection.value;
+    $scope.ofertasSelection = $scope.ofertasSelection || [];
+    $scope.$watch("ofertasSelection", function(selection) {
+        if (typeof selection != 'undefined' && $scope.compra) {
+            $scope.compra.ofertas = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.id = selectedItem.value;
+                $scope.compra.ofertas.push(collectionItem);
+            });
         }
     });
     

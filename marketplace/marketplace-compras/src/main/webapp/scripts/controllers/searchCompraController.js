@@ -17,8 +17,6 @@ angular.module('marketplace-compras').controller('SearchCompraController', funct
         }
         return max;
     };
-    $scope.productoList = ProductoResource.queryAll();
-    $scope.ofertaList = OfertaResource.queryAll();
 
     $scope.performSearch = function() {
         $scope.searchResults = CompraResource.queryAll(function(){
