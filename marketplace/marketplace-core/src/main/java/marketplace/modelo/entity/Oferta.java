@@ -56,13 +56,7 @@ public class Oferta {
     private Integer valor;
     
     
-    /**
-    * @generated
-    * -1-1-false
-    */
-    @ManyToOne(cascade={},fetch=FetchType.EAGER)
-    private Compra compra;
-    
+       
     /**
     * @generated
     * 1--1-true 
@@ -111,18 +105,6 @@ public class Oferta {
 		this.producto=producto;
 	}*/
 	
-	/**
-	* @generated
-	*/
-	public Compra getCompra() {
-	    return this.compra;
-	}
 	
-	/**
-	* @generated
-	*/
-	public void setCompra(Compra compra) {
-	    this.compra = compra;
-	}
 	
 }
