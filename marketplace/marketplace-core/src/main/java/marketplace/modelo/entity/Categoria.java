@@ -1,5 +1,7 @@
 package marketplace.modelo.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,7 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
 	@NamedQuery(name="Categoria.obtenerTodos", query="select e from Categoria e")
 })
-public class Categoria {
+public class Categoria implements Serializable {
 
 	@Id
     //@Column(name = "Categoria_id")

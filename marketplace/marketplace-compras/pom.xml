@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>marketplace</groupId>
   <artifactId>marketplace-compras</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
@@ -13,33 +12,27 @@
     </parent>
   <build>
     <finalName>marketplace-compras</finalName>
-
 	<plugins>
-		<plugin>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-war-plugin</artifactId>
-			<version>2.6</version>
-			<configuration>
-				<archive>
-					<manifestEntries></manifestEntries>
-				</archive>
-				<failOnMissingWebXml>false</failOnMissingWebXml>
-				<attachClasses>true</attachClasses>
-
-				<!-- <overlays>
-					<overlay>
-						<groupId>marketplace</groupId>
-						<artifactId>marketplace-core</artifactId>
-						<excludes>
-							<exclude>**</exclude>
-						</excludes>
-					</overlay>
-					<overlay>
-						empty groupId/artifactId represents the current build
-					</overlay>
-				</overlays> -->
-			</configuration>
-		</plugin>
+	<plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+    
+        <configuration>
+        <dependentWarExcludes>WEB-INF/web.xml,app.*</dependentWarExcludes>
+          <overlays>
+            <overlay>
+              <groupId>marketplace</groupId>
+              <artifactId>marketplace-core</artifactId>
+             
+              <excludes>
+                <exclude>WEB-INF/classes/META-INF/persistence.xml,
+                marketplace.rest.application.ApplicationConfig</exclude>
+              </excludes>
+            </overlay>
+           
+          </overlays>
+        </configuration>
+      </plugin>
             </plugins>
   </build>
   <properties>
@@ -96,6 +89,13 @@
     	<version>1.0.0</version>
     	<classifier>classes</classifier>
       <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>marketplace</groupId>
+      <artifactId>marketplace-core</artifactId>
+    	<version>1.0.0</version>
+      <type>war</type>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
   <dependencyManagement>

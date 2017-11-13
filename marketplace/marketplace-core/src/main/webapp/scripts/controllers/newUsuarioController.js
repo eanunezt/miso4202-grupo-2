@@ -1,5 +1,5 @@
 
-angular.module('marketplace-core').controller('NewUsuarioController', function ($scope, $location, locationParser, flash, UsuarioResource ) {
+angular.module('marketplace-app').controller('NewUsuarioController', function ($scope, $location, locationParser, flash, UsuarioResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.usuario = $scope.usuario || {};

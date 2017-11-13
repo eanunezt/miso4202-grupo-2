@@ -1,6 +1,6 @@
 
 
-angular.module('marketplace-core').controller('SearchUsuarioController', function($scope, $http, $filter, UsuarioResource ) {
+angular.module('marketplace-app').controller('SearchUsuarioController', function($scope, $http, $filter, UsuarioResource ) {
 
     $scope.search={};
     $scope.currentPage = 0;

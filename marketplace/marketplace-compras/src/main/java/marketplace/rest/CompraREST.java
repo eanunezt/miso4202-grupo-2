@@ -45,7 +45,7 @@ public class CompraREST {
 		return servicio.obtenerTodos();
 	}
 	
-	@GET
+		@GET
 		@Produces("application/json")
 		public List<Compra> listAll(@QueryParam("start") Integer startPosition,
 				@QueryParam("max") Integer maxResult) {

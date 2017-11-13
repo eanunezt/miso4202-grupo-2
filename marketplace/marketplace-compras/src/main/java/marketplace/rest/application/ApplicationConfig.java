@@ -2,8 +2,14 @@
 package marketplace.rest.application;
 
 import java.util.Set;
+
 import javax.ws.rs.core.Application;
-import marketplace.rest.*;
+
+import marketplace.rest.CategoriaREST;
+import marketplace.rest.CompraREST;
+import marketplace.rest.OfertaREST;
+import marketplace.rest.ProductoREST;
+import marketplace.rest.UsuarioREST;
 
 /**
  * Esta clase registra la informacion de las clases que van a ser utilizadas como servicios REST
@@ -19,9 +25,16 @@ public class ApplicationConfig extends Application {
         return resources;
     }
     
-    private void addRestResourceClasses(Set<Class<?>> resources) {
+    /*private void addRestResourceClasses(Set<Class<?>> resources) {
        resources.add(CompraREST.class);
-    }
+    }*/
     
+    private void addRestResourceClasses(Set<Class<?>> resources) {
+		resources.add(CompraREST.class);
+		resources.add(OfertaREST.class);
+		resources.add(UsuarioREST.class);
+		resources.add(CategoriaREST.class);
+		resources.add(ProductoREST.class);
+    }
 }
 

@@ -1,12 +1,15 @@
 package marketplace.modelo.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +20,6 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -39,14 +41,11 @@ public class Compra implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Id
-    //@Column(name = "Compra_id")
+    @Column(name = "id_compra")
     @GeneratedValue(generator = "CompraGen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "CompraGen", sequenceName = "Compra_SEQ",allocationSize = 1)
 	private Long id;
-	@Version
-	@Column(name = "version")
-	private int version;
-
+	
 	@Column(length = 50)
 	@NotNull
 	private String descripcion;
@@ -59,12 +58,12 @@ public class Compra implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@NotNull
 	private Date fechaCompra;
-
-	@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
-	private Set<Producto> productos = new HashSet<Producto>();
-
-	@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
-	private Set<Oferta> ofertas = new HashSet<Oferta>();
+	
+	@OneToMany(targetEntity=Oferta.class,fetch=FetchType.EAGER)
+	private Set<marketplace.modelo.entity.Oferta> ofertas = new HashSet<marketplace.modelo.entity.Oferta>();
+	
+	@OneToMany(targetEntity=Producto.class,fetch=FetchType.EAGER)
+	private Set<marketplace.modelo.entity.Producto> productos = new HashSet<marketplace.modelo.entity.Producto>();
 
 	public Long getId() {
 		return this.id;
@@ -74,13 +73,6 @@ public class Compra implements Serializable {
 		this.id = id;
 	}
 
-	public int getVersion() {
-		return this.version;
-	}
-
-	public void setVersion(final int version) {
-		this.version = version;
-	}
 
 	@Override
 	public boolean equals(Object obj) {
@@ -136,7 +128,6 @@ public class Compra implements Serializable {
 		String result = getClass().getSimpleName() + " ";
 		if (id != null)
 			result += "id: " + id;
-		result += ", version: " + version;
 		if (descripcion != null && !descripcion.trim().isEmpty())
 			result += ", descripcion: " + descripcion;
 		if (valor != null)

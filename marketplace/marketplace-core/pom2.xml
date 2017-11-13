@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>marketplace</groupId>
-    <artifactId>marketplace-core</artifactId>
+    <artifactId>marketplace-app</artifactId>
     <version>1.0</version>
     <packaging>war</packaging>
-    <name>01 - marketplace-core</name>
+    <name>01 - marketplace-app</name>
 	 <parent>
         <groupId>marketplace</groupId>
         <artifactId>marketplace-parent</artifactId>

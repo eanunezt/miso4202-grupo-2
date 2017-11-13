@@ -36,6 +36,7 @@ public class FiltroExcepciones implements Filter {
             chain.doFilter(request, response);
         } catch (Exception e) {
             response.setContentType("application/json;charset=UTF-8");
+            e.printStackTrace();
             ((HttpServletResponse) response).setStatus(500);
             try (PrintWriter out = response.getWriter()) {
                 out.append("{\"mensaje\":\""+procesarTexto(obtenerUltimaExcepcion(e).getMessage())+"\"}");

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="marketplace-compras">
+<html lang="en" ng-app="marketplace-app">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,7 +34,11 @@
                     </a>
                     <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
                         <div id="sidebar-entries" class="list-group">
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Categoria')}" href="#/Categoria" data-toggle="offcanvas">Categoria</a>
                         	<a class="list-group-item" ng-class="{active: matchesRoute('Compras')}" href="#/Compras" data-toggle="offcanvas">Compras</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Oferta')}" href="#/Oferta" data-toggle="offcanvas">Oferta</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Productos')}" href="#/Productos" data-toggle="offcanvas">Productos</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('Usuarios')}" href="#/Usuarios" data-toggle="offcanvas">Usuarios</a>
                         </div>
                     </nav>
                 </div>
@@ -74,9 +78,25 @@
     <script src="scripts/services/flash.js"></script>
     <script src="scripts/services/locationParser.js"></script>
     <script src="scripts/controllers/flashController.js"></script>
+    <script src="scripts/services/CategoriaFactory.js"></script>
+    <script src="scripts/controllers/newCategoriaController.js"></script>
+    <script src="scripts/controllers/searchCategoriaController.js"></script>
+    <script src="scripts/controllers/editCategoriaController.js"></script>
     <script src="scripts/services/CompraFactory.js"></script>
     <script src="scripts/controllers/newCompraController.js"></script>
     <script src="scripts/controllers/searchCompraController.js"></script>
     <script src="scripts/controllers/editCompraController.js"></script>
+    <script src="scripts/services/OfertaFactory.js"></script>
+    <script src="scripts/controllers/newOfertaController.js"></script>
+    <script src="scripts/controllers/searchOfertaController.js"></script>
+    <script src="scripts/controllers/editOfertaController.js"></script>
+    <script src="scripts/services/ProductoFactory.js"></script>
+    <script src="scripts/controllers/newProductoController.js"></script>
+    <script src="scripts/controllers/searchProductoController.js"></script>
+    <script src="scripts/controllers/editProductoController.js"></script>
+    <script src="scripts/services/UsuarioFactory.js"></script>
+    <script src="scripts/controllers/newUsuarioController.js"></script>
+    <script src="scripts/controllers/searchUsuarioController.js"></script>
+    <script src="scripts/controllers/editUsuarioController.js"></script>
 </body>
 </html>

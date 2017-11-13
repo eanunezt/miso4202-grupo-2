@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-core',['ngRoute','ngResource'])
+angular.module('marketplace-app',['ngRoute','ngResource'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})

@@ -40,8 +40,8 @@ public class CompraDAO {
 			if (maxResult != null) {
 				findAllQuery.setMaxResults(maxResult);
 			}
-			//final List<Oferta> results = findAllQuery.getResultList();
-		return findAllQuery.getResultList();
+			final List<Compra> results = findAllQuery.getResultList();
+		return results; //findAllQuery.getResultList();
 	}
 	
 	/**
