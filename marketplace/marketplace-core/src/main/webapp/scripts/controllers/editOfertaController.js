@@ -1,6 +1,6 @@
 
 
-angular.module('marketplace-core').controller('EditOfertaController', function($scope, $routeParams, $location, flash, OfertaResource , ProductoResource) {
+angular.module('marketplace-app').controller('EditOfertaController', function($scope, $routeParams, $location, flash, OfertaResource , ProductoResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;

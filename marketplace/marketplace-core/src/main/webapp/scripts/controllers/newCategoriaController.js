@@ -1,5 +1,5 @@
 
-angular.module('marketplace-core').controller('NewCategoriaController', function ($scope, $location, locationParser, flash, CategoriaResource ) {
+angular.module('marketplace-app').controller('NewCategoriaController', function ($scope, $location, locationParser, flash, CategoriaResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.categoria = $scope.categoria || {};

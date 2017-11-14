@@ -1,5 +1,7 @@
 package marketplace.modelo.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,7 +26,7 @@ import marketplace.modelo.enums.RolEnum;
 	@NamedQuery(name="Usuario.obtenerTodos", query="select e from Usuario e"),
 	@NamedQuery(name="Usuario.obtenerUsuarioPorNombre", query="select e from Usuario e where e.usuario = :usuario"),
 })
-public class Usuario {
+public class Usuario implements Serializable{
 
 	@Id
     //@Column(name = "Usuario_id")

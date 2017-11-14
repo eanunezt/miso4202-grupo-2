@@ -1,5 +1,5 @@
 
-angular.module('marketplace-compras').controller('NewCompraController', function ($scope, $location, locationParser, flash, CompraResource , ProductoResource, OfertaResource) {
+angular.module('marketplace-app').controller('NewCompraController', function ($scope, $location, locationParser, flash, CompraResource , ProductoResource, OfertaResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.compra = $scope.compra || {};

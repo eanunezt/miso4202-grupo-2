@@ -1,7 +1,9 @@
 package marketplace.modelo.entity;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,10 +25,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @NamedQueries({
 	@NamedQuery(name="Oferta.obtenerTodos", query="select e from Oferta e")
 })
-public class Oferta {
+public class Oferta implements Serializable{
 
 	@Id
-    //@Column(name = "Oferta_id")
+    @Column(name = "id_oferta")
     @GeneratedValue(generator = "OfertaGen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "OfertaGen", sequenceName = "Oferta_SEQ",allocationSize = 1)
 	private Long id;
@@ -61,8 +63,8 @@ public class Oferta {
     * @generated
     * 1--1-true 
     */
-    //@OneToMany(cascade={},fetch=javax.persistence.FetchType.LAZY)
-    //private List<Producto> producto;
+    @ManyToOne
+	private Producto producto;
     
     
     /**
@@ -94,17 +96,40 @@ public class Oferta {
     }
     
 	
-	/*public List<Producto> getProducto(){
-		if(producto!=null){
+	public Producto getProducto(){
+		/*if(producto!=null){
 			producto=new ArrayList<Producto>(); 
-		}
+		}*/
 		return this.producto;
 	}
 	
-	public void setProducto(List<Producto> producto){
+	public void setProducto(Producto producto){
 		this.producto=producto;
-	}*/
-	
+	}
+    @Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (!(obj instanceof Oferta)) {
+			return false;
+		}
+		Oferta other = (Oferta) obj;
+		if (id != null) {
+			if (!id.equals(other.id)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
+	}
 	
 	
 }

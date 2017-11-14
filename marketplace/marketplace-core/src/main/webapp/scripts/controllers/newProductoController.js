@@ -1,5 +1,5 @@
 
-angular.module('marketplace-core').controller('NewProductoController', function ($scope, $location, locationParser, flash, ProductoResource , UsuarioResource, CategoriaResource) {
+angular.module('marketplace-app').controller('NewProductoController', function ($scope, $location, locationParser, flash, ProductoResource , UsuarioResource, CategoriaResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.producto = $scope.producto || {};
