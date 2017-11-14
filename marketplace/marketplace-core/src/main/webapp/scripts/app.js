@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-app',['ngRoute','ngResource'])
+angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
@@ -20,6 +20,23 @@ angular.module('marketplace-app',['ngRoute','ngResource'])
         redirectTo: '/'
       });
   }])
+.run(['$rootScope', '$http', '$location', '$localStorage', function($rootScope, $http, $location, $localStorage) {
+    // keep user logged in after page refresh
+    if ($localStorage.currentUser) {
+        $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
+        $rootScope.currentUser = $localStorage.currentUser;
+    }	
+    
+    // redirect to login page if not logged in and trying to access a restricted page
+    $rootScope.$on(	'$locationChangeStart', function (event, next, current) {
+        var publicPages = ['/Usuario'];
+        var restrictedPage = publicPages.indexOf($location.path()) === -1;
+        if (restrictedPage && !$localStorage.currentUser) {
+            $location.path('/Login');
+        }
+    });    
+	
+}])
   .controller('LandingPageController', function LandingPageController() {
   })
   .controller('NavController', function NavController($scope, $location) {

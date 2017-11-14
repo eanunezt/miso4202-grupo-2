@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope','$scope', '$filter', '$http','$location','$window','$localStorage',function ($rootScope, $scope, $filter, $http, $location,$localStorage,$window) {
+angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope','$scope', '$filter', '$http','$location','$window','$localStorage',function ($rootScope, $scope, $filter, $http, $location,$window,$localStorage) {
 
     $scope.datosFormulario = {};	
 
@@ -18,7 +18,7 @@ angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope
                 $rootScope.currentUser = $localStorage.currentUser;
                 $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.usuario.token;
                 //callback(true);
-                $location.url("http://localhost:8080/marketplace-core");
+                $window.location.href="http://localhost:8080/marketplace-core";
             }).error(function (data, status, headers, config) {
                 alert('Error al guardar la informaci\xf3n, por favor intente m\xe1s tarde');
             });
