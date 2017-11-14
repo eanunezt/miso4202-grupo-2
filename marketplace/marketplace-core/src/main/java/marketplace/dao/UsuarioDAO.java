@@ -51,6 +51,23 @@ public class UsuarioDAO {
 		return em.find(Usuario.class, id);
 	}
 	
+	/**
+	 * 
+	 * @param usuario
+	 * @return
+	 */
+	public Usuario obtener(String usuario){
+		Usuario user = null;
+		TypedQuery<Usuario> consultaUsuarioPorUsername = 
+		em.createNamedQuery("Usuario.obtenerUsuarioPorNombre", Usuario.class);
+		consultaUsuarioPorUsername.setParameter("usuario", usuario);
+		List<Usuario> listaUsuario = consultaUsuarioPorUsername.getResultList();
+		if(!listaUsuario.isEmpty()){
+			user = listaUsuario.get(0);
+		}
+		return user;
+	}	
+	
 	
 	/**
 	* @generated

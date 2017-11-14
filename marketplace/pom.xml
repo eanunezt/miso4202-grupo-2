@@ -13,7 +13,7 @@
     <modules>
         <module>marketplace-core</module>
         <module>marketplace-compras</module>
-		<module>marketplace-token</module>
+		<module>marketplace-autenticacion</module>
     </modules>
 
     <properties>

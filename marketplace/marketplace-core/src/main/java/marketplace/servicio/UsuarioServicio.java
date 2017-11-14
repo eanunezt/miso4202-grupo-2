@@ -39,6 +39,15 @@ public class UsuarioServicio {
 		return dao.obtenerTodos(startPosition,maxResult);
 	}
 	
+
+	/**
+	* @param usuario nombre de usuario del elemento Usuario
+	* @return Usuario del nombre de usuario dado
+	* @generated
+	*/
+	public Usuario obtener(String usuario){
+		return dao.obtener(usuario);
+	}		
 	
 	
 	/**

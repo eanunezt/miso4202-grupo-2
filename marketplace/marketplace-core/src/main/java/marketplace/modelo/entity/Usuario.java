@@ -21,7 +21,8 @@ import marketplace.modelo.enums.RolEnum;
 @Entity
 @Table(name="Usuario")//, schema="${schema}")
 @NamedQueries({
-	@NamedQuery(name="Usuario.obtenerTodos", query="select e from Usuario e")
+	@NamedQuery(name="Usuario.obtenerTodos", query="select e from Usuario e"),
+	@NamedQuery(name="Usuario.obtenerUsuarioPorNombre", query="select e from Usuario e where e.usuario = :usuario"),
 })
 public class Usuario {
 
@@ -30,6 +31,7 @@ public class Usuario {
     @GeneratedValue(generator = "UsuarioGen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "UsuarioGen", sequenceName = "Usuario_SEQ",allocationSize = 1)
 	private Long id;
+    private String token;
 
 	public Long getId(){
 		return this.id;
@@ -158,6 +160,15 @@ public class Usuario {
         this.rol = rol;
     }
     
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+	
+	
 	
 	/*public List<Producto> getCatalogo(){
 		if(catalogo!=null){
