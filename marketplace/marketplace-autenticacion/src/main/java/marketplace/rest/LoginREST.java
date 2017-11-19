@@ -1,7 +1,6 @@
 package marketplace.rest;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
