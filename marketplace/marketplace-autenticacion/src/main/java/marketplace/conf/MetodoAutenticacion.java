@@ -12,7 +12,7 @@ public class MetodoAutenticacion {
 	Object clase;
 	String tipoAutenticacion;
 
-	public void autenticar(Object clase, Usuario usuario, String password){
+	public boolean autenticar(Object clase, Usuario usuario, String password){
 		final Field[] variables = clase.getClass().getDeclaredFields();
 		Autenticacion autenticacion;
 		for (final Field variable : variables) {
@@ -27,7 +27,7 @@ public class MetodoAutenticacion {
 		}else{
 			autenticacion  = new Autenticacion(new CredencialesAutServicio());
 		}
-		autenticacion.ejecutar(usuario.getNombre(), usuario.getPassword(), password);
+		return autenticacion.ejecutar(usuario.getNombre(), usuario.getPassword(), password);
 	}
 
 }
