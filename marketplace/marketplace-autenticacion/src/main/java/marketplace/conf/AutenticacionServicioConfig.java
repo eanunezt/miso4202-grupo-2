@@ -1,16 +1,16 @@
 package marketplace.conf;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+//import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+//import org.springframework.context.annotation.Bean;
+//import org.springframework.context.annotation.Configuration;
 
 import marketplace.interfaz.IAutenticacion;
 import marketplace.servicio.CredencialesAutServicio;
 import marketplace.servicio.TokenAutServicio;
 
-@Configuration
+//@Configuration
 public class AutenticacionServicioConfig {
-	@Bean
+	/**@Bean
 	@ConditionalOnProperty(name = "autenticacion.tipo", havingValue = "token", matchIfMissing = true)
 	public IAutenticacion tokenAutenticacionServicio(){
 		return new TokenAutServicio();
@@ -20,5 +20,6 @@ public class AutenticacionServicioConfig {
 	@ConditionalOnProperty(name = "autenticacion.tipo", havingValue = "credenciales")
 	public IAutenticacion credencialesAutenticacionServicio(){
 		return new CredencialesAutServicio();
-	}	
+	}*/	
 }
+

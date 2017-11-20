@@ -4,8 +4,12 @@ package marketplace.servicio;
 import marketplace.dao.*;
 import marketplace.modelo.entity.*;
 import java.util.List;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import javax.persistence.*;
+
+import com.auth0.jwt.algorithms.Algorithm;
+
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 

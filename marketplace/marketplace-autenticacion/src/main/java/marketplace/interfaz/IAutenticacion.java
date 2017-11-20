@@ -1,5 +1,6 @@
 package marketplace.interfaz;
 
+
 public interface IAutenticacion {
-	void autenticar();
-}
+	boolean autenticar(String username, String passwordEncriptado, String password);
+}  

@@ -1,14 +1,11 @@
-
 package marketplace.rest.application;
-
 import java.util.Set;
+
 import javax.ws.rs.core.Application;
+
+
 import marketplace.rest.*;
 
-/**
- * Esta clase registra la informacion de las clases que van a ser utilizadas como servicios REST
- * @author eanunezt
- */
 @javax.ws.rs.ApplicationPath("/rest")
 public class ApplicationConfig extends Application {
 
@@ -22,6 +19,4 @@ public class ApplicationConfig extends Application {
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(LoginREST.class);
     }
-    
 }
-
