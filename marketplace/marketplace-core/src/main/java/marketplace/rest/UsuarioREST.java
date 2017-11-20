@@ -91,6 +91,7 @@ public class UsuarioREST {
 	public Response guardarUsuario(Usuario entity){
 		try {
 			if(entity.getPassword() != null){
+				
 				String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
 				Algorithm algorithm = Algorithm.HMAC256(pw_hash);
 				String token = JWT.create()
