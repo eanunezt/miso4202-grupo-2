@@ -14,10 +14,14 @@
         <module>marketplace-core</module>
         <module>marketplace-compras</module>
 		<module>marketplace-autenticacion</module>
+		<module>marketplace-aspectos</module>
     </modules>
 
     <properties>
         <version.java>1.8</version.java>
+        <maven.compiler.complianceLevel>${version.java}</maven.compiler.complianceLevel>
+        <maven.compiler.source>${version.java}</maven.compiler.source>
+        <maven.compiler.target>${version.java}</maven.compiler.target>
         <version.javaee>7.0</version.javaee>
         <version.jersey>2.23.2</version.jersey>
         <version.commons-io>2.5</version.commons-io>
@@ -250,8 +254,27 @@
                         </execution>
                     </executions>
                 </plugin>
+                 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>aspectj-maven-plugin</artifactId>
+                    <version>1.10</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>compile</goal> 		<!-- use this goal to weave all your main classes -->
+                                <goal>test-compile</goal> 	<!-- use this goal to weave all your test classes -->
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                    	<complianceLevel>${maven.compiler.complianceLevel}</complianceLevel>
+                        <source>${maven.compiler.source}</source>
+                        <target>${maven.compiler.target}</target>
+                    </configuration>
+                </plugin>
             </plugins>
 
+        
         </pluginManagement>
     </build>
 

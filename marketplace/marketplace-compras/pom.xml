@@ -4,7 +4,7 @@
   <artifactId>marketplace-compras</artifactId>
   <version>1.0.0</version>
   <packaging>war</packaging>
-  <name>02 - marketplace-compras</name>
+  <name>03 - marketplace-compras</name>
 	 <parent>
         <groupId>marketplace</groupId>
         <artifactId>marketplace-parent</artifactId>

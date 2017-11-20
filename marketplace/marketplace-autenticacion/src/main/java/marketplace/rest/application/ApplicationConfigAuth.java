@@ -10,7 +10,7 @@ import marketplace.rest.*;
  * @author eanunezt
  */
 @javax.ws.rs.ApplicationPath("/rest")
-public class ApplicationConfig extends Application {
+public class ApplicationConfigAuth extends Application {
 
     @Override
     public Set<Class<?>> getClasses() {
