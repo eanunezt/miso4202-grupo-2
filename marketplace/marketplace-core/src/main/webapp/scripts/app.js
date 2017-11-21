@@ -20,7 +20,7 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
         redirectTo: '/'
       });
   }])
-.run(['$rootScope', '$http', '$location', '$localStorage', function($rootScope, $http, $location, $localStorage) {
+/*.run(['$rootScope', '$http', '$location', '$localStorage', function($rootScope, $http, $location, $localStorage) {
     // keep user logged in after page refresh
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
@@ -36,7 +36,7 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
         }
     });    
 	
-}])
+}])*/
   .controller('LandingPageController', function LandingPageController() {
   })
   .controller('NavController', function NavController($scope, $location) {
