@@ -33,7 +33,6 @@ public class Usuario implements Serializable{
     @GeneratedValue(generator = "UsuarioGen", strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "UsuarioGen", sequenceName = "Usuario_SEQ",allocationSize = 1)
 	private Long id;
-    private String token;
 
 	public Long getId(){
 		return this.id;
@@ -162,15 +161,6 @@ public class Usuario implements Serializable{
         this.rol = rol;
     }
     
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-	
-	
 	
 	/*public List<Producto> getCatalogo(){
 		if(catalogo!=null){

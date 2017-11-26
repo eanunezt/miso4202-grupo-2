@@ -1,25 +1,27 @@
-
-<div class="panel panel-primary">
-	<div class="panel-body"></div>
-	<div class="panel-heading">Autenticación</div>
-	<div class="panel-body">
-		<div class="input-group">
-			<span class="input-group-addon"><i
-				class="glyphicon glyphicon-user"></i></span> <input id="usuario"
-				type="text" ng-model="datosFormulario.usuario" class="form-control"
-				name="usuario" placeholder="usuario">
-		</div>
-		<div class="input-group">
-			<span class="input-group-addon"><i
-				class="glyphicon glyphicon-lock"></i></span> <input id="password"
-				ng-model="datosFormulario.password" type="password"
-				class="form-control" name="password" placeholder="Password">
-		</div>
-		<button type="button" ng-click="login()">Login</button>
-		<div style="background-color: #f1f1f1">
-			<button type="button" class="cancelbtn">Cancel</button>
-			<span class="psw">Forgot <a href="#">password?</a></span>
-		</div>
-	</div>
-</div>
-
+  <div class="w3-display-left w3-padding w3-col l6 m8">
+    <div class="w3-container w3-red">
+      <h2><i class="fa fa-bed w3-margin-right"></i>Iniciar sesión</h2>
+    </div>
+    <div class="w3-container w3-white w3-padding-16">
+        <div class="w3-row-padding" style="margin:0 -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <label><i class="fa fa-male"></i> Usuario</label>
+            <input id="usuario" class="w3-input w3-border" type="text" placeholder="Nombre de usuario" name="usuario" ng-model="datosFormulario.usuario" required>
+          </div>
+          <div class="w3-half">
+            <label><i class="fa fa-lock"></i> Contraseña</label>
+            <input class="w3-input w3-border" ng-model="datosFormulario.password" type="password" placeholder="Contraseña" required>
+          </div>
+        </div>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+          <div class="w3-half w3-margin-bottom">
+            <i class="fa fa-user-secret"></i> <a href="#">Olvidaste tu contraseña</a>
+          </div>
+        </div>       
+        <button class="w3-button w3-dark-grey" ng-click="login()"><i class="fa fa-key w3-margin-right"></i> Iniciar Sesión</button>
+        <button class="w3-button w3-dark-grey" onclick="javascript:location.href='../marketplace-core/app.html#/Usuarios/new'"><i class="	fa fa-user-circle w3-margin-right"></i> Hazte una cuenta</button>
+        <div class="w3-row-padding" style="margin:8px -16px;">
+        	Al iniciar sesión en la cuenta aceptas nuestros Términos y condiciones y Política de privacidad
+        </div>
+    </div>
+  </div>     

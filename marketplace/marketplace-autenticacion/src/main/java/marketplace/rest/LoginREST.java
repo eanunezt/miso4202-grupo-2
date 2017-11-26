@@ -7,6 +7,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
 import org.mindrot.jbcrypt.BCrypt;
 
 import marketplace.anotations.Autowired;
@@ -38,23 +41,23 @@ public class LoginREST {
 	 * @generated
 	 */
 	@POST
-	public Usuario login(Usuario entity){
-
+	public Response login(Usuario entity){
 		String username = entity.getUsuario();
 		Usuario usuario = servicio.obtener(username);
+		try {
+			if(usuario != null){
+				String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
+				MetodoAutenticacion metodo = new MetodoAutenticacion();
+				if(!metodo.autenticar(this, usuario, pw_hash)){
+					return Response.status(Status.UNAUTHORIZED).entity("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos").build();
+				}
+			}else{
+				return Response.status(Status.UNAUTHORIZED).entity("Error al autenticar el usuario, El usuario no se encuentra registrado").build();
+			}
 
-		if(usuario != null){
-			String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
-			MetodoAutenticacion metodo = new MetodoAutenticacion();
-			if(metodo.autenticar(this, usuario, pw_hash)){
-				
-			}
-			else{
-				
-			}
-		}else{
-			
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
 		}
-		return usuario;
+		return Response.ok(usuario).build();
 	}
 }

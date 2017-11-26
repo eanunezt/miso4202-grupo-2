@@ -20,7 +20,7 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
         redirectTo: '/'
       });
   }])
-/*.run(['$rootScope', '$http', '$location', '$localStorage', function($rootScope, $http, $location, $localStorage) {
+.run(['$rootScope', '$http', '$location', '$localStorage','$window', function($rootScope, $http, $location, $localStorage, $window) {
     // keep user logged in after page refresh
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
@@ -29,14 +29,15 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
     
     // redirect to login page if not logged in and trying to access a restricted page
     $rootScope.$on(	'$locationChangeStart', function (event, next, current) {
-        var publicPages = ['/Usuario'];
+        var publicPages = ['/Usuarios/new'];
         var restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
-            $location.path('/Login');
+        	var url = "http://" + $window.location.host + "/marketplace-autenticacion";
+            $window.location.href=url;
         }
     });    
 	
-}])*/
+}])
   .controller('LandingPageController', function LandingPageController() {
   })
   .controller('NavController', function NavController($scope, $location) {

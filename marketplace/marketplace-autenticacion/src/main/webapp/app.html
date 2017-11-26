@@ -3,63 +3,97 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Marketplace Autenticación</title>
-    <link href="styles/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="styles/bootstrap-theme.css" rel="stylesheet" media="screen">
-    <link href="styles/main.css" rel="stylesheet" media="screen">
-    <link href="styles/login.css" rel="stylesheet" media="screen">
+	<title>Marketplace de Turismo</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+	body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
+	</style>
 </head>
 <body>
-    <div id="wrap">
-    	
-    	<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-				    <a class="navbar-brand" href="#">Autenticación</a>
-			    </div>
-			</div>
-    	</div>
-        
-        <div class="container">
-            <div class="row row-offcanvas row-offcanvas-left">
-                <!-- sidebar -->
-                <div class="col-xs-6 col-sm-3 well sidebar-offcanvas">
-                    <a href="app.html">
-                        <img class="img-rounded" src="img/mapache.png" alt="JBoss Forge"></img>
-                    </a>
-                    <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
-                        <div id="sidebar-entries" class="list-group">
-                        	<a class="list-group-item" href="#/Login" data-toggle="offcanvas">Login</a>
-                        </div>
-                    </nav>
-                </div>
-                <!-- main area-->
-                <div class="col-sm-offset-1 col-xs-12 col-sm-8 well mainarea">
-                    <div ng-controller="FlashController" class="alert alert-dismissible" ng-class="'alert-' + flash.getMessage().cssClass" role="alert" ng-show="showAlert">
-                        <button type="button" class="close" ng-click="hideAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        {{flash.getMessage().text}}
-                    </div>
-                    <div id="main" ng-view>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="footer">
-        <div class="container">
-            <p>Powered by <a href="http://jboss.org/forge">Forge</a></p>
-            <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
-        </div>
-    </div>
+<body class="w3-light-grey">
+<!-- Navigation Bar -->
+<div class="w3-bar w3-white w3-large">
+  <a href="#" class="w3-bar-item w3-button w3-red w3-mobile"><i class="fa fa-bed w3-margin-right"></i>Logo</a>
+  <a href="##about" class="w3-bar-item w3-button w3-mobile">About</a>
+  <a href="##contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
+  <div ng-controller="LogoutCtrl" class="w3-bar-item w3-button w3-right  w3-mobile" ng-if="currentUser"><a ng-click="logout()" >Salir</a></div>
+   <div class="w3-bar-item w3-button w3-right w3-red w3-mobile" ng-if="currentUser">Bienvenido {{currentUser.user.nombre}}</div> 
  
-    <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
+</div>
+<!-- Header -->
+<header class="w3-display-container w3-content" style="max-width:1500px;">
+  <img class="w3-image" src="img/hotel.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
+  <div ng-controller="LoginCtrl" ng-include="'views/Login.html'" ng-if="!currentUser"></div>  
+  
+</header>
+<!-- Page content -->
+<div class="w3-content" style="max-width:1532px;">
+
+  <div class="w3-row-padding" id="about">
+    <div class="w3-col l4 m7">
+      <h3>About</h3>
+      <h6>Our offers are the best. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</h6>
+    <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+    </div>
+    <div class="w3-col l8 m5">
+      <div id="googleMap" style="width:100%;height:400px;" class="w3-grayscale"></div>
+    </div>
+  </div>
+  
+  <div class="w3-row w3-large w3-center" style="margin:32px 0">
+    <div class="w3-third"><i class="fa fa-map-marker w3-text-red"></i> 423 Alguna dirección, Bogotá, Colombia</div>
+    <div class="w3-third"><i class="fa fa-phone w3-text-red"></i> Teléfono: +00 151515</div>
+    <div class="w3-third"><i class="fa fa-envelope w3-text-red"></i> Email: mail@mail.com</div>
+  </div>
+
+  <div class="w3-panel w3-red w3-leftbar w3-padding-32">
+    <h6><i class="fa fa-info w3-deep-orange w3-padding w3-margin-right"></i> On demand, we can offer playstation, babycall, children care, dog equipment, etc.</h6>
+  </div>
+
+  <div class="w3-container w3-padding-32 w3-black w3-opacity w3-card w3-hover-opacity-off" style="margin:32px 0;">
+    <h2>Get the best offers first!</h2>
+    <p>Join our newsletter.</p>
+    <label>E-mail</label>
+    <input class="w3-input w3-border" type="text" placeholder="Your Email address">
+    <button type="button" class="w3-button w3-red w3-margin-top">Subscribe</button>
+  </div>
+
+  <div class="w3-container" id="contact">
+    <h2>Contact</h2>
+    <p>If you have any questions, do not hesitate to ask them.</p>
+    <i class="fa fa-map-marker w3-text-red" style="width:30px"></i> Bogotá, Colombia<br>
+    <i class="fa fa-phone w3-text-red" style="width:30px"></i> Phone: +00 151515<br>
+    <i class="fa fa-envelope w3-text-red" style="width:30px"> </i> Email: mail@mail.com<br>
+    <form action="/action_page.php" target="_blank">
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Name" required name="Name"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Email" required name="Email"></p>
+      <p><input class="w3-input w3-padding-16 w3-border" type="text" placeholder="Message" required name="Message"></p>
+      <p><button class="w3-button w3-black w3-padding-large" type="submit">SEND MESSAGE</button></p>
+    </form>
+  </div>
+
+<!-- End page content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-padding-32 w3-black w3-center w3-margin-top">
+  <h5>Find Us On</h5>
+  <div class="w3-xlarge w3-padding-16">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+  </div>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank" class="w3-hover-text-green">mapache soluciones</a></p>
+</footer>   
+
+   <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
     <script src="scripts/vendor/jquery-2.1.1.js"></script>
     <script src="scripts/vendor/bootstrap.js"></script>
     <script src="scripts/vendor/angular.js"></script>
@@ -77,8 +111,26 @@
     <script src="scripts/controllers/flashController.js"></script>     
     <script src="scripts/controllers/LoginController.js"></script> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.10/ngStorage.min.js"></script>
+<!-- Add Google Maps -->
+<script>
+function myMap()
+{
+  myCenter=new google.maps.LatLng(4.5907516,-74.1626568);
+  var mapOptions= {
+    center:myCenter,
+    zoom:12, scrollwheel: false, draggable: false,
+    mapTypeId:google.maps.MapTypeId.ROADMAP
+  };
+  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 
+  var marker = new google.maps.Marker({
+    position: myCenter,
+  });
+  marker.setMap(map);
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
 
-                
+             
 </body>
 </html>
