@@ -30,7 +30,7 @@ public class LoginREST {
 	@EJB(lookup="java:global/marketplace-core/UsuarioServicio")
 	private UsuarioServicio servicio;
 
-	@IMetodoAutenticacion(tipoAutenticacion="token")
+	@IMetodoAutenticacion
 	@Autowired
 	MetodoAutenticacion autenticacion;
 
@@ -46,9 +46,8 @@ public class LoginREST {
 		Usuario usuario = servicio.obtener(username);
 		try {
 			if(usuario != null){
-				String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
 				MetodoAutenticacion metodo = new MetodoAutenticacion();
-				if(!metodo.autenticar(this, usuario, pw_hash)){
+				if(!metodo.autenticar(this, usuario, entity.getPassword())){
 					return Response.status(Status.UNAUTHORIZED).entity("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos").build();
 				}
 			}else{
