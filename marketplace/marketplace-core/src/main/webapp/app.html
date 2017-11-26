@@ -20,7 +20,8 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                     </button>
-				    <a class="navbar-brand" href="#">marketplace-core  Bienvenido {{currentUser.user.nombre}}</a> 
+				    <a class="navbar-brand" href="#" ng-if="currentUser"> Bienvenido {{currentUser.user.nombre}}</a>
+				    <div ng-controller="LogoutCtrl" ng-if="currentUser"><a ng-click="logout()" >Salir</a></div>
 			    </div>
 			</div>
     	</div>

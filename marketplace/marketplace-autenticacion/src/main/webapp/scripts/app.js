@@ -40,6 +40,6 @@ angular.module('marketplace-autenticacion',['ngRoute','ngResource','ngStorage'])
 	      // remove user from local storage and clear http auth header
 	      delete $localStorage.currentUser;
 	      delete $rootScope.currentUser;
-	      $http.defaults.headers.common.Authorization = '';	  
+	      $http.defaults.headers.common.Authorization = '';	 
 	  }
   });

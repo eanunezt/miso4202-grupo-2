@@ -45,4 +45,14 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
         var path = $location.path();
         return (path === ("/" + route) || path.indexOf("/" + route + "/") == 0);
     };
+  })
+  .controller('LogoutCtrl', function LogoutController($rootScope,$scope,$localStorage,$http,$window){
+	  $scope.logout = function(){
+	      // remove user from local storage and clear http auth header
+	      delete $localStorage.currentUser;
+	      delete $rootScope.currentUser;
+	      $http.defaults.headers.common.Authorization = '';	  
+	      var url = "http://" + $window.location.host + "/marketplace-autenticacion";
+          $window.location.href=url;	      
+	  }
   });
