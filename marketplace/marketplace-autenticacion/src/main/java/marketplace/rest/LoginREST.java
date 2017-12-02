@@ -9,9 +9,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
-
-import org.mindrot.jbcrypt.BCrypt;
-
 import marketplace.anotations.Autowired;
 import marketplace.anotations.IMetodoAutenticacion;
 import marketplace.conf.MetodoAutenticacion;

@@ -4,7 +4,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import marketplace.anotations.IMetodoAutenticacion;
 import marketplace.constantes.IConstantesAutenticacion;
-import marketplace.interfaz.IAutenticacion;
 import marketplace.modelo.entity.Usuario;
 import marketplace.servicio.CredencialesAutServicio;
 import marketplace.servicio.TokenAutServicio;
@@ -20,8 +19,6 @@ public class MetodoAutenticacion {
 		for (final Field variable : variables) {
 			final Annotation anotacionObtenida = variable.getAnnotation(IMetodoAutenticacion.class);
 			if (anotacionObtenida != null && anotacionObtenida instanceof IMetodoAutenticacion) {
-				final IMetodoAutenticacion metodo = (IMetodoAutenticacion) anotacionObtenida;
-				//tipoAutenticacion = metodo.tipoAutenticacion();
 				anotacionEncontrada = true;
 			}
 		}
