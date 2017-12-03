@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-app',['ngRoute','ngResource'])
+angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})
@@ -23,6 +23,24 @@ angular.module('marketplace-app',['ngRoute','ngResource'])
         redirectTo: '/'
       });
   }])
+.run(['$rootScope', '$http', '$location', '$localStorage','$window', function($rootScope, $http, $location, $localStorage, $window) {
+    // keep user logged in after page refresh
+    if ($localStorage.currentUser) {
+        $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
+        $rootScope.currentUser = $localStorage.currentUser;
+    }	
+    
+    // redirect to login page if not logged in and trying to access a restricted page
+    $rootScope.$on(	'$locationChangeStart', function (event, next, current) {
+        var publicPages = ['/Usuarios/new', '/Productos'];
+        var restrictedPage = publicPages.indexOf($location.path()) === -1;
+        if (restrictedPage && !$localStorage.currentUser) {
+        	var url = "http://" + $window.location.host + "/marketplace-autenticacion";
+            $window.location.href=url;
+        }
+    });    
+	
+}])
   .controller('LandingPageController', function LandingPageController() {
   })
   .controller('NavController', function NavController($scope, $location) {
@@ -30,4 +48,14 @@ angular.module('marketplace-app',['ngRoute','ngResource'])
         var path = $location.path();
         return (path === ("/" + route) || path.indexOf("/" + route + "/") == 0);
     };
+  })
+  .controller('LogoutCtrl', function LogoutController($rootScope,$scope,$localStorage,$http,$window){
+	  $scope.logout = function(){
+	      // remove user from local storage and clear http auth header
+	      delete $localStorage.currentUser;
+	      delete $rootScope.currentUser;
+	      $http.defaults.headers.common.Authorization = '';	  
+	      var url = "http://" + $window.location.host + "/marketplace-autenticacion";
+          $window.location.href=url;	      
+	  }
   });
