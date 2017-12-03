@@ -2,7 +2,7 @@
     <jboss-deployment-structure>  
         <deployment>  
              <dependencies>  
-                  <module name="deployment.marketplace-core.war" export="true"/>   
+                  <module name="deployment.marketplace-compras.war" export="true"/>  
           </dependencies>  
         </deployment>  
     </jboss-deployment-structure>  

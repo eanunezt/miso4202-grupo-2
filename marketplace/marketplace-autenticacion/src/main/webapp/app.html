@@ -28,6 +28,7 @@
 <header class="w3-display-container w3-content" style="max-width:1500px;">
   <img class="w3-image" src="img/hotel.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
   <div ng-controller="LoginCtrl" ng-include="'views/Login.html'" ng-if="!currentUser"></div>  
+  <div ng-controller="LandingPageController" data-ng-init="inicializar()"></div>
   
 </header>
 <!-- Page content -->
