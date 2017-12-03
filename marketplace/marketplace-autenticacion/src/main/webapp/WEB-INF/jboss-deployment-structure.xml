@@ -3,7 +3,6 @@
 	<deployment>
 		<dependencies>
 			<module name="deployment.marketplace-autenticacion.war" export="true" />
-			<module name="deployment.marketplace-core.war"/>
 		</dependencies>
 	</deployment>
 </jboss-deployment-structure>
