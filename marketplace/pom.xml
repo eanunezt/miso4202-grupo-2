@@ -15,6 +15,8 @@
         <module>marketplace-compras</module>
 		<module>marketplace-autenticacion</module>
 		<module>marketplace-aspectos</module>
+		<module>marketplace-producto-basico</module>
+		<module>marketplace-producto-compras</module>
     </modules>
 
     <properties>

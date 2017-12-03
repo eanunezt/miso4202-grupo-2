@@ -18,6 +18,7 @@
         <artifactId>maven-war-plugin</artifactId>
     
         <configuration>
+        <attachClasses>true</attachClasses>
         <dependentWarExcludes>WEB-INF/jboss-deployment-structure.xml,WEB-INF/web.xml,app.*</dependentWarExcludes>
           <overlays>
             <overlay>
