@@ -1,14 +1,20 @@
 
-angular.module('marketplace-app').controller('NewUsuarioController', function ($scope, $location, locationParser, flash, UsuarioResource ) {
+angular.module('marketplace-app').controller('NewUsuarioController', function ($scope, $rootScope, $location, locationParser, flash, UsuarioResource ) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.usuario = $scope.usuario || {};
     
-    $scope.rolList = [
-        "ADMINISTRADOR",
-        "CLIENTE",
-        "PROVEEDOR"
-    ];
+    if($rootScope.currentUser != undefined && $rootScope.currentUser.user.rol == "ADMINISTRADOR"){
+	    $scope.rolList = [
+	        "ADMINISTRADOR",
+	        "CLIENTE",
+	        "PROVEEDOR"
+	    ];
+    }else{
+	    $scope.rolList = [
+	        "CLIENTE"
+	    ];    	
+    }
     
 
     $scope.save = function() {

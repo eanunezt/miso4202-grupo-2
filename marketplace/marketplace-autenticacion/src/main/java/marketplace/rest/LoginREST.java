@@ -1,19 +1,18 @@
 package marketplace.rest;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import org.mindrot.jbcrypt.BCrypt;
-
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 import marketplace.anotations.Autowired;
 import marketplace.anotations.IMetodoAutenticacion;
+import marketplace.conf.Error;
 import marketplace.conf.MetodoAutenticacion;
-import marketplace.modelo.entity.Usuario;
-import marketplace.servicio.UsuarioServicio;
+import marketplace.dto.Usuario;
 
 /**
  *  @author dmahechav
@@ -24,10 +23,7 @@ import marketplace.servicio.UsuarioServicio;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LoginREST {
-	@EJB(lookup="java:global/marketplace-core/UsuarioServicio")
-	private UsuarioServicio servicio;
-
-	@IMetodoAutenticacion(tipoAutenticacion="token")
+	@IMetodoAutenticacion
 	@Autowired
 	MetodoAutenticacion autenticacion;
 
@@ -38,23 +34,26 @@ public class LoginREST {
 	 * @generated
 	 */
 	@POST
-	public Usuario login(Usuario entity){
-
-		String username = entity.getUsuario();
-		Usuario usuario = servicio.obtener(username);
-
-		if(usuario != null){
-			String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
-			MetodoAutenticacion metodo = new MetodoAutenticacion();
-			if(metodo.autenticar(this, usuario, pw_hash)){
-				
+	public Response login(Usuario entity){
+		Error error = new Error();
+		try {
+			if(entity != null){
+				MetodoAutenticacion metodo = new MetodoAutenticacion();
+				if(!metodo.autenticar(this, entity)){
+					error.setDescError("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos");
+					error.setTipoError(Status.UNAUTHORIZED.toString());
+					return Response.status(Status.UNAUTHORIZED).entity(error).build();
+				}
+			}else{
+				error.setDescError("Error al autenticar el usuario, El usuario no se encuentra registrado");
+				error.setTipoError(Status.UNAUTHORIZED.toString());
+				return Response.status(Status.UNAUTHORIZED).entity(error).build();
 			}
-			else{
-				
-			}
-		}else{
-			
+
+		} catch (Exception e) {
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
 		}
-		return usuario;
+		entity.setPasswd("");
+		return Response.ok(entity).build();
 	}
 }

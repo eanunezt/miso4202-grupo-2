@@ -21,8 +21,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
-import org.mindrot.jbcrypt.BCrypt;
-
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
@@ -80,6 +78,17 @@ public class UsuarioREST {
 		return Response.ok(entity).build();
 	}
 
+	
+	/**
+	* @param usuario nombre de usuario del elemento Usuario
+	* @return Usuario del nombre de usuario dado
+	* @generated
+	*/
+	@GET
+	@Path("/{usuario}")
+	public Usuario obtenerUsuario(@PathParam("usuario") String usuario){
+		return servicio.obtener(usuario);
+	}	
 
 	/**
 	 * almacena la informacion de Usuario
@@ -92,12 +101,9 @@ public class UsuarioREST {
 	public Response guardarUsuario(Usuario entity){
 		try {
 			if(entity.getPassword() != null){
-				
-				String pw_hash = BCrypt.hashpw(entity.getPassword(), BCrypt.gensalt());
-				Algorithm algorithm = Algorithm.HMAC256(pw_hash);
+				Algorithm algorithm = Algorithm.HMAC256(entity.getPassword());
 				String token = JWT.create()
 						.withClaim("username", entity.getUsuario())
-				        //.withIssuer("auth0")
 				        .sign(algorithm);
 				entity.setPassword(token);
 			} 
