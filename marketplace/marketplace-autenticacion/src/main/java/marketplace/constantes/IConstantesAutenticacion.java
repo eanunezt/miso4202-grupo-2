@@ -8,8 +8,8 @@ public interface IConstantesAutenticacion {
 	public static final String COMPRAS = "compras";
 	
 	
-	public static final String CONTEXTO_BASICO = "marketplace-core";
-	public static final String CONTEXTO_COMPRAS = "marketplace-compras";
+	public static final String CONTEXTO_BASICO = "producto-basico";
+	public static final String CONTEXTO_COMPRAS = "producto-compras";
 	
 	public static final String DESC_BASICO = "MARKETPLACE PRODUCTO BÁSICO";
 	public static final String DESC_COMPRAS = "MARKETPLACE PRODUCTO COMPRAS";
