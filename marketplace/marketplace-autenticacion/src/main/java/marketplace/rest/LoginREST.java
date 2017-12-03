@@ -1,6 +1,5 @@
 package marketplace.rest;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -13,8 +12,7 @@ import marketplace.anotations.Autowired;
 import marketplace.anotations.IMetodoAutenticacion;
 import marketplace.conf.Error;
 import marketplace.conf.MetodoAutenticacion;
-import marketplace.modelo.entity.Usuario;
-import marketplace.servicio.UsuarioServicio;
+import marketplace.dto.Usuario;
 
 /**
  *  @author dmahechav
@@ -25,9 +23,6 @@ import marketplace.servicio.UsuarioServicio;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class LoginREST {
-	@EJB(lookup="java:global/marketplace-core/UsuarioServicio")
-	private UsuarioServicio servicio;
-
 	@IMetodoAutenticacion
 	@Autowired
 	MetodoAutenticacion autenticacion;
@@ -40,13 +35,11 @@ public class LoginREST {
 	 */
 	@POST
 	public Response login(Usuario entity){
-		String username = entity.getUsuario();
-		Usuario usuario = servicio.obtener(username);
 		Error error = new Error();
 		try {
-			if(usuario != null){
+			if(entity != null){
 				MetodoAutenticacion metodo = new MetodoAutenticacion();
-				if(!metodo.autenticar(this, usuario, entity.getPassword())){
+				if(!metodo.autenticar(this, entity)){
 					error.setDescError("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos");
 					error.setTipoError(Status.UNAUTHORIZED.toString());
 					return Response.status(Status.UNAUTHORIZED).entity(error).build();
@@ -60,6 +53,7 @@ public class LoginREST {
 		} catch (Exception e) {
 			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
 		}
-		return Response.ok(usuario).build();
+		entity.setPasswd("");
+		return Response.ok(entity).build();
 	}
 }

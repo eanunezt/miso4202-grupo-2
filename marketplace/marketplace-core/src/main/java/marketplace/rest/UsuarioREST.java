@@ -78,6 +78,17 @@ public class UsuarioREST {
 		return Response.ok(entity).build();
 	}
 
+	
+	/**
+	* @param usuario nombre de usuario del elemento Usuario
+	* @return Usuario del nombre de usuario dado
+	* @generated
+	*/
+	@GET
+	@Path("/{usuario}")
+	public Usuario obtenerUsuario(@PathParam("usuario") String usuario){
+		return servicio.obtener(usuario);
+	}	
 
 	/**
 	 * almacena la informacion de Usuario
