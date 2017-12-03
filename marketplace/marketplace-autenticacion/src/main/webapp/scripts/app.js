@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-autenticacion',['ngRoute','ngResource','ngStorage'])
+angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/',{templateUrl:'views/landing.html',controller:'LandingPageController'})

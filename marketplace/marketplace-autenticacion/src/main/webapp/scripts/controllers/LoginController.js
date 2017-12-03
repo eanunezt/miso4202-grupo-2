@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope','$scope', '$filter', '$http','$location','$window','$localStorage',function ($rootScope, $scope, $filter, $http, $location,$window,$localStorage,usuarioService) {
+angular.module('marketplace-app').controller('LoginCtrl', ['$rootScope','$scope', '$filter', '$http','$location','$window','$localStorage',function ($rootScope, $scope, $filter, $http, $location,$window,$localStorage,usuarioService) {
 
     $scope.datosFormulario = {};
     

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-autenticacion').filter('searchFilter', function() {
+angular.module('marketplace-app').filter('searchFilter', function() {
 
     function matchObjectProperties(expectedObject, actualObject) {
         var flag = true;

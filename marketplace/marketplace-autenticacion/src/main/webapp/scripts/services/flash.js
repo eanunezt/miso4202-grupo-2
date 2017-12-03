@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('marketplace-autenticacion').factory('flash', ['$rootScope', function ($rootScope) {
+angular.module('marketplace-app').factory('flash', ['$rootScope', function ($rootScope) {
     var messages = [];
     var currentMessage = {};
 
