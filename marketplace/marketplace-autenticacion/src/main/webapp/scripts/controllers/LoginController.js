@@ -17,12 +17,18 @@ angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope
                 $localStorage.currentUser = { user: $scope.usuario, token: $scope.usuario.password }; 
                 $rootScope.currentUser = $localStorage.currentUser;
                 $http.defaults.headers.common.Authorization = 'Bearer ' + $scope.usuario.password;
-                document.location.href
-                var url = "http://" + $window.location.host + "/marketplace-core";
+                var url = "http://" + $window.location.host + "/" + $localStorage.contexto;
                 $window.location.href=url;
             }).error(function (data, status, headers, config) {
                 alert('Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos.');
             });
         
     };
+    
+    
+    $scope.direccionar = function () {
+    	var url = "../" + $localStorage.contexto + "/app.html#/Usuarios/new";
+    	location.href=url;
+    };
+    
 }]);

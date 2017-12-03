@@ -11,6 +11,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import marketplace.anotations.Autowired;
 import marketplace.anotations.IMetodoAutenticacion;
+import marketplace.conf.Error;
 import marketplace.conf.MetodoAutenticacion;
 import marketplace.modelo.entity.Usuario;
 import marketplace.servicio.UsuarioServicio;
@@ -41,18 +42,23 @@ public class LoginREST {
 	public Response login(Usuario entity){
 		String username = entity.getUsuario();
 		Usuario usuario = servicio.obtener(username);
+		Error error = new Error();
 		try {
 			if(usuario != null){
 				MetodoAutenticacion metodo = new MetodoAutenticacion();
 				if(!metodo.autenticar(this, usuario, entity.getPassword())){
-					return Response.status(Status.UNAUTHORIZED).entity("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos").build();
+					error.setDescError("Error al autenticar el usuario, Verifique que el usuario y la contraseña sean correctos");
+					error.setTipoError(Status.UNAUTHORIZED.toString());
+					return Response.status(Status.UNAUTHORIZED).entity(error).build();
 				}
 			}else{
-				return Response.status(Status.UNAUTHORIZED).entity("Error al autenticar el usuario, El usuario no se encuentra registrado").build();
+				error.setDescError("Error al autenticar el usuario, El usuario no se encuentra registrado");
+				error.setTipoError(Status.UNAUTHORIZED.toString());
+				return Response.status(Status.UNAUTHORIZED).entity(error).build();
 			}
 
 		} catch (Exception e) {
-			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+			return Response.status(Status.INTERNAL_SERVER_ERROR).entity(e).build();
 		}
 		return Response.ok(usuario).build();
 	}

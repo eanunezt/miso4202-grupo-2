@@ -18,5 +18,6 @@ public class ApplicationConfigAuth extends Application {
     
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(LoginREST.class);
+        resources.add(InitRest.class);
     }
 }

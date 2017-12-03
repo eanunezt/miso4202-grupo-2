@@ -1,20 +1,25 @@
 package marketplace.conf;
 
-import marketplace.modelo.entity.Usuario;
-
 public class Respuesta {
-	String producto;
-	Usuario usuario;
-	public String getProducto() {
-		return producto;
+	String nomProducto;
+	String descripcion;
+	String contexto;
+	public String getNomProducto() {
+		return nomProducto;
 	}
-	public void setProducto(String producto) {
-		this.producto = producto;
+	public void setNomProducto(String nomProducto) {
+		this.nomProducto = nomProducto;
 	}
-	public Usuario getUsuario() {
-		return usuario;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	public String getContexto() {
+		return contexto;
+	}
+	public void setContexto(String contexto) {
+		this.contexto = contexto;
 	}
 }
