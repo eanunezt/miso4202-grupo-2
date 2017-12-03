@@ -42,11 +42,5 @@ angular.module('marketplace-autenticacion').controller('LoginCtrl', ['$rootScope
     	location.href=url;
     };
     
-}]).factory('usuarioService', function($http) {
-    return {
-      obtenerUsuario: function(usuario) {
-         return $http.get('http://' + $window.location.host + '/' + $localStorage.producto.contexto + '/rest/usuarios/' + usuario);
-      }
-    }
-  });
-;
+}]);
+

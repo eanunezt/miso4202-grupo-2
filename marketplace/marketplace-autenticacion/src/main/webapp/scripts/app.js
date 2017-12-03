@@ -11,7 +11,9 @@ angular.module('marketplace-autenticacion',['ngRoute','ngResource','ngStorage'])
   }])
   .run(['$rootScope', '$http', '$location', '$localStorage','$window', function($rootScope, $http, $location, $localStorage, $window) {
     // keep user logged in after page refresh
+
 	$rootScope.producto = $localStorage.producto;
+
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
         $rootScope.currentUser = $localStorage.currentUser;
