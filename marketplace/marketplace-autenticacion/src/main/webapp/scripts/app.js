@@ -11,7 +11,7 @@ angular.module('marketplace-autenticacion',['ngRoute','ngResource','ngStorage'])
   }])
   .run(['$rootScope', '$http', '$location', '$localStorage','$window', function($rootScope, $http, $location, $localStorage, $window) {
     // keep user logged in after page refresh
-	$rootScope.contexto = $localStorage.contexto;
+	$rootScope.producto = $localStorage.producto;
     if ($localStorage.currentUser) {
         $http.defaults.headers.common.Authorization = 'Bearer ' + $localStorage.currentUser.token;
         $rootScope.currentUser = $localStorage.currentUser;
@@ -33,7 +33,7 @@ angular.module('marketplace-autenticacion',['ngRoute','ngResource','ngStorage'])
 	  $scope.inicializar = function() {
           $http.get('./rest/init', {})
           .success(function (data, status, headers, config) {
-        	  $localStorage.contexto = data.contexto;
+        	  $localStorage.producto = data;
           }).error(function (data, status, headers, config) {
               alert('Error al consultar la informaci\xf3n de producto, por favor intente m\xe1s tarde');
       });  		  

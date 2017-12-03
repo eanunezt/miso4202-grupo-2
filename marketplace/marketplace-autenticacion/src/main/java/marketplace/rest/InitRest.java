@@ -31,9 +31,11 @@ public class InitRest {
 		respuesta.setNomProducto(producto);
 		if(producto.equals(IConstantesAutenticacion.BASICO)){
 			respuesta.setContexto(IConstantesAutenticacion.CONTEXTO_BASICO);
+			respuesta.setDescripcion(IConstantesAutenticacion.DESC_BASICO);
 		}
 		else if (producto.equals(IConstantesAutenticacion.COMPRAS)) {
 			respuesta.setContexto(IConstantesAutenticacion.CONTEXTO_COMPRAS);
+			respuesta.setDescripcion(IConstantesAutenticacion.DESC_COMPRAS);
 		}
 		return Response.ok(respuesta).build();
 	}

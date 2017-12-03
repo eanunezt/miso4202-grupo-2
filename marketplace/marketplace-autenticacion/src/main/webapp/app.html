@@ -9,6 +9,9 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+	
 	<style>
 	body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 	</style>
@@ -21,10 +24,16 @@
   <a href="##about" class="w3-bar-item w3-button w3-mobile">About</a>
   <a href="##contact" class="w3-bar-item w3-button w3-mobile">Contact</a>
   <div ng-controller="LogoutCtrl" class="w3-bar-item w3-button w3-right  w3-mobile" ng-if="currentUser"><a ng-click="logout()" >Salir</a></div>
-   <div class="w3-bar-item w3-button w3-right w3-red w3-mobile" ng-if="currentUser">Bienvenido {{currentUser.user.nombre}}</div> 
+   
  
 </div>
 <!-- Header -->
+  <!-- Header -->
+  <header class="w3-container w3-center w3-padding-48 w3-black">
+    <h1 class="w3-xxlarge"><b>{{producto.descripcion}}</b></h1>
+    <h6 ng-if="currentUser">Bienvenido al sitio <span class="w3-tag">{{currentUser.user.nombre}}</span></h6>
+  </header>
+
 <header class="w3-display-container w3-content" style="max-width:1500px;">
   <img class="w3-image" src="img/hotel.jpg" alt="The Hotel" style="min-width:1000px" width="1500" height="800">
   <div ng-controller="LoginCtrl" ng-include="'views/Login.html'" ng-if="!currentUser"></div>  
