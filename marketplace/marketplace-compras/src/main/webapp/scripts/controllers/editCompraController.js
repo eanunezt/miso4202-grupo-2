@@ -16,7 +16,7 @@ angular.module('marketplace-app').controller('EditCompraController', function($s
                     };
                     var labelObject = {
                         value : item.id,
-                        text : item.id
+                        text : item.nombre+' - $'+item.valor
                     };
                     if($scope.compra.productos){
                         $.each($scope.compra.productos, function(idx, element) {
@@ -37,7 +37,7 @@ angular.module('marketplace-app').controller('EditCompraController', function($s
                     };
                     var labelObject = {
                         value : item.id,
-                        text : item.id
+                        text : item.nombre+' - $'+item.valor
                     };
                     if($scope.compra.ofertas){
                         $.each($scope.compra.ofertas, function(idx, element) {

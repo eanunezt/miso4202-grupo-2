@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
   *  @generated
   *  @author eanunezt
   */
+@SuppressWarnings("serial")
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
 @Table(name="Producto")//, schema="${schema}")

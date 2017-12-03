@@ -8,7 +8,7 @@ angular.module('marketplace-app').controller('NewCompraController', function ($s
         $scope.productosSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.id,
-                text : item.id
+                text : item.nombre+' - $'+item.valor
             });
         });
     });
@@ -27,7 +27,7 @@ angular.module('marketplace-app').controller('NewCompraController', function ($s
         $scope.ofertasSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.id,
-                text : item.id
+                text :item.nombre+' - $'+item.valor
             });
         });
     });
