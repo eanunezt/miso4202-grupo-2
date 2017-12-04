@@ -11,6 +11,7 @@
 package marketplace;
 
 import java.util.Calendar;
+import java.util.List;
 
 /**
  *
@@ -32,6 +33,7 @@ public class Instalador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -40,23 +42,25 @@ public class Instalador extends javax.swing.JFrame {
         chkPSE = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         tRutaPropiedades = new javax.swing.JTextField();
-        tRutaPOM = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         tLog = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         tComandoMaven = new javax.swing.JTextField();
+        rbTXT = new javax.swing.JRadioButton();
+        rbXML = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Instalador MarketPlace");
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14));
         jLabel1.setText("INSTALADOR MARKET PLACE");
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("C:\\workspace\\netBeans\\Instalador\\imagen\\modeloFeatures.JPG")); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/marketplace/modeloFeatures.JPG"))); // NOI18N
         jLabel2.setName("jLabel2"); // NOI18N
 
         jPanel1.setName("jPanel1"); // NOI18N
@@ -64,7 +68,6 @@ public class Instalador extends javax.swing.JFrame {
         chkBasico.setSelected(true);
         chkBasico.setText("Market Place Basico");
         chkBasico.setToolTipText("");
-        chkBasico.setEnabled(false);
         chkBasico.setName("mkBasico"); // NOI18N
         chkBasico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,44 +110,37 @@ public class Instalador extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chkCompras, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(chkBasico, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(80, 80, 80))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(chkPSE, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkBasico, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
+                    .addComponent(chkCompras, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(9, 9, 9)
                 .addComponent(chkBasico)
-                .addGap(7, 7, 7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkCompras)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkPSE)
-                .addContainerGap(10, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel4.setText("Ruta archivo Propiedades:");
         jLabel4.setName("jLabel4"); // NOI18N
 
-        jLabel5.setText("Ruta archivo POM:");
-        jLabel5.setName("jLabel5"); // NOI18N
-
-        tRutaPropiedades.setToolTipText("");
+        tRutaPropiedades.setText("./");
+        tRutaPropiedades.setToolTipText("Ruta de la carpeta termina en / .ej.: c:/temp/");
         tRutaPropiedades.setName("tRutaPropiedades"); // NOI18N
-
-        tRutaPOM.setName("tRutaPOM"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
@@ -165,10 +161,19 @@ public class Instalador extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setText("Comandos MAVEN:");
+        jLabel7.setText("Ejecutar");
         jLabel7.setName("jLabel7"); // NOI18N
 
         tComandoMaven.setName("tComandoMaven"); // NOI18N
+
+        buttonGroup1.add(rbTXT);
+        rbTXT.setSelected(true);
+        rbTXT.setText("Logger TXT");
+        rbTXT.setName("rbTXT"); // NOI18N
+
+        buttonGroup1.add(rbXML);
+        rbXML.setText("Logger XML");
+        rbXML.setName("rbXML"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -180,26 +185,30 @@ public class Instalador extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(52, 52, 52)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rbXML)
+                                            .addComponent(rbTXT))))
                                 .addGap(45, 45, 45)
                                 .addComponent(jLabel2))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel4)
-                                    .addComponent(jLabel5)
-                                    .addComponent(jLabel7))
+                                    .addComponent(jLabel7)
+                                    .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tComandoMaven, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
-                                    .addComponent(tRutaPOM, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                                    .addComponent(tComandoMaven, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
                                     .addComponent(tRutaPropiedades)))
-                            .addComponent(jScrollPane1)
-                            .addComponent(jLabel6)))
+                            .addComponent(jScrollPane1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(135, 135, 135)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(209, 209, 209)
+                        .addGap(214, 214, 214)
                         .addComponent(jButton1)))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
@@ -211,25 +220,29 @@ public class Instalador extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(14, 14, 14)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(5, 5, 5)
+                        .addComponent(rbTXT)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rbXML)))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(tRutaPropiedades, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tComandoMaven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(tRutaPOM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7)
-                    .addComponent(tComandoMaven, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(jLabel6)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -238,6 +251,11 @@ public class Instalador extends javax.swing.JFrame {
 
     private void chkBasicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkBasicoActionPerformed
         // TODO add your handling code here:
+        Object[] selectedObjects = chkBasico.getSelectedObjects();        
+        if(selectedObjects != null){
+            chkCompras.setSelected(false);
+            chkPSE.setSelected(false);
+        }
     }//GEN-LAST:event_chkBasicoActionPerformed
 
     private void chkPSEStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_chkPSEStateChanged
@@ -251,6 +269,7 @@ public class Instalador extends javax.swing.JFrame {
         Object[] selectedObjects = chkPSE.getSelectedObjects();        
         if(selectedObjects != null){
             chkCompras.setSelected(true);
+            chkBasico.setSelected(false);
         }
     }//GEN-LAST:event_chkPSEActionPerformed
 
@@ -259,6 +278,8 @@ public class Instalador extends javax.swing.JFrame {
         Object[] selectedObjects = chkCompras.getSelectedObjects();
         if(selectedObjects == null){
             chkPSE.setSelected(false);
+        }else{
+            chkBasico.setSelected(false);
         }
     }//GEN-LAST:event_chkComprasActionPerformed
 
@@ -267,34 +288,57 @@ public class Instalador extends javax.swing.JFrame {
         boolean featureBASICO= chkBasico.getSelectedObjects() != null; 
         boolean featureCOMPRAS = chkCompras.getSelectedObjects() != null;
         boolean featurePSE = chkPSE.getSelectedObjects() != null;
+        boolean loggerTXT = rbTXT.isSelected();
+        boolean loggerXML = rbXML.isSelected();
+        
+        
           
-        boolean[] features = {featureBASICO,featureCOMPRAS,featurePSE};
+        boolean[] features = {featureBASICO,featureCOMPRAS,featurePSE,loggerTXT,loggerXML};
         
         String rutaProperties = tRutaPropiedades.getText().trim();
-        String rutaPOM = tRutaPOM.getText().trim();
         String comandoMaven = tComandoMaven.getText().trim();
         String res="";
         tLog.setText(null);
+        if(!featureBASICO && !featureCOMPRAS){
+            tLog.append("DEBE SELECCIONAR UN PRODUCTO!");
+            return;
+        }
         tLog.append(Calendar.getInstance().getTime().toString()+"\n");
-        tLog.append("Seleccion realizada: \nBasico="+featureBASICO+ " \nCompras="+ featureCOMPRAS +" \nPSE="+ featurePSE +"\n");
+        tLog.append("Seleccion realizada: \nBasico="+featureBASICO+ " \nCompras="+ featureCOMPRAS +" \nPSE="+ featurePSE +"\nLogger TXT="+loggerTXT+"\nLogger XML="+loggerXML+"\n");
         tLog.append("Archivo propiedades : "+rutaProperties+"\n");
-        tLog.append("Archivo POM : "+rutaPOM+"\n");
-        tLog.append("Comando MAVEN: "+comandoMaven );
+        tLog.append("Ejecutar: "+comandoMaven );
+        
+        tLog.append("\n---------CARGAR COMANDOS------------");
+        
+        List<String> comandos = new ManejaArchivo().cargarArchivo("/marketplace/comandos.txt");
+        tLog.append("\nComandos cargados : "+comandos.size());
         
         tLog.append("\n---------CREAR ARCHIVO PROPIEDADES-------------");
         if(!rutaProperties.equals("")){
-            res = new CrearArchivoPropiedades(rutaProperties,features).crearArchivo();
+            res = new ManejaArchivo(rutaProperties,features).crearArchivoXML();
+            tLog.append("\n"+res);
+            res = new ManejaArchivo(rutaProperties,features).crearArchivoTXT();
             tLog.append("\n"+res);
         }else{
             tLog.append("\n Ruta vacia no se crea archivo propiedades!");
         }
         
-        tLog.append("\n---------EJECUTAR COMANDO MAVEN-------------");
+        tLog.append("\n---------EJECUTAR COMANDOS-------------");
         if(!comandoMaven.equals("")){
-            res = new EjecutarComandos(comandoMaven).ejecutar();
+            res = new EjecutarComandos().ejecutar(comandoMaven);
             tLog.append("\n"+res);
-        }else{
-            tLog.append("\n No hay comandoa MAVEN a ejecutar!");
+        }else{            
+            if(comandos.size()>0 && !comandos.get(0).equals("")){
+                String[] cmds = comandos.toArray(new String[comandos.size()]);
+                res = new EjecutarComandos().ejecutar(cmds);
+                tLog.append("\n"+res);
+            }
+            tLog.append("\n---------EJECUTAR COMANDO DESDE .BAT-------------");
+            if(featureBASICO)
+                res = new EjecutarComandos().ejecutarBAT("instalarBasico.bat");
+            if(featureCOMPRAS)
+                res = new EjecutarComandos().ejecutarBAT("instalarCompras.bat");
+            tLog.append("\n"+res);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -311,6 +355,7 @@ public class Instalador extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox chkBasico;
     private javax.swing.JCheckBox chkCompras;
     private javax.swing.JCheckBox chkPSE;
@@ -319,14 +364,14 @@ public class Instalador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rbTXT;
+    private javax.swing.JRadioButton rbXML;
     private javax.swing.JTextField tComandoMaven;
     private javax.swing.JTextArea tLog;
-    private javax.swing.JTextField tRutaPOM;
     private javax.swing.JTextField tRutaPropiedades;
     // End of variables declaration//GEN-END:variables
 }
