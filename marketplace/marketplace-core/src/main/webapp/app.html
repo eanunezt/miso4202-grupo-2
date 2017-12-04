@@ -11,6 +11,7 @@
 </head>
 <body>
     	<header id="header">
+    			
     			<div ng-controller="LandingPageController" data-ng-init="inicializar()"></div>
 				<h1><a href="#intro">{{producto.descripcion}}</a></h1>
 				<nav>
@@ -35,7 +36,7 @@
 						          <li><a ng-class="{active: matchesRoute('Usuarios/new')}" href="#/Usuarios/new" data-toggle="modal" data-target="#myModal">Nuevo usuario</a></li>
 						        </ul>
 						    </li>
-				        		<li ng-if="!currentUser.user.nombre"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
+				        		<li ng-controller="LandingPageController" ng-if="!currentUser.user.nombre"><a ng-click="direccionar()"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
 						</div>
 					</ul>
 					 
