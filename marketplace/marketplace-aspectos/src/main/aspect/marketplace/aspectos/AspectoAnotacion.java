@@ -10,6 +10,11 @@ import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.After;
 //import org.aspectj.lang.annotation.Around;
 
+import marketplace.logger.factoryMethod.creador.CreatorConcretoLogger;
+import marketplace.logger.factoryMethod.producto.ILogger;
+import marketplace.logger.factoryMethod.producto.Propiedades;
+
+
 @Aspect
 public class AspectoAnotacion {
 
@@ -32,8 +37,5 @@ public class AspectoAnotacion {
 			ILogger l=new CreatorConcretoLogger().logger(logger);
 			if(l!=null) l.escribir("Se grabo un usuario "+Calendar.getInstance().getTime().toString());
 		}		
-		
-	}
-
 	}
 }
