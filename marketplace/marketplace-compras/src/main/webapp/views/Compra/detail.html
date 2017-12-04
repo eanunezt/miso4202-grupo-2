@@ -56,6 +56,7 @@
             <button id="saveCompra" name="saveCompra" class="btn btn-primary" ng-disabled="isClean() || CompraForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
             <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
             <button id="deleteCompra" name="deleteCompra" class="btn btn-danger" ng-show="compra.id" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+            <img ng-if="Producto.pagoPSE === 'SI'" src="img/logopsenuevo.png" width="50px" height="50px"/>
         </div>
     </div>
 </form>
