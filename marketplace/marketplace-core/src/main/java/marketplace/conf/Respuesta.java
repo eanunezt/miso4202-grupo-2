@@ -4,6 +4,8 @@ public class Respuesta {
 	String nomProducto;
 	String descripcion;
 	String contexto;
+	String pagoPSE;
+	
 	public String getNomProducto() {
 		return nomProducto;
 	}
@@ -21,5 +23,11 @@ public class Respuesta {
 	}
 	public void setContexto(String contexto) {
 		this.contexto = contexto;
+	}
+	public String getPagoPSE() {
+		return pagoPSE;
+	}
+	public void setPagoPSE(String pagoPSE) {
+		this.pagoPSE = pagoPSE;
 	}
 }
