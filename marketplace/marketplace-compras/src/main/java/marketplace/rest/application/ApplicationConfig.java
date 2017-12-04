@@ -7,6 +7,7 @@ import javax.ws.rs.core.Application;
 
 import marketplace.rest.CategoriaREST;
 import marketplace.rest.CompraREST;
+import marketplace.rest.InitRest;
 import marketplace.rest.OfertaREST;
 import marketplace.rest.ProductoREST;
 import marketplace.rest.UsuarioREST;
@@ -35,6 +36,7 @@ public class ApplicationConfig extends Application {
 		resources.add(UsuarioREST.class);
 		resources.add(CategoriaREST.class);
 		resources.add(ProductoREST.class);
+		resources.add(InitRest.class);
     }
 }
 

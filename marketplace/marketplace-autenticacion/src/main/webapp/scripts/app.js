@@ -37,7 +37,7 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
           .success(function (data, status, headers, config) {
         	  $localStorage.producto = data;
           }).error(function (data, status, headers, config) {
-              alert('Error al consultar la informaci\xf3n de producto, por favor intente m\xe1s tarde');
+              alert('Error al iniciar la aplicación');
       });  		  
 	  };
 
