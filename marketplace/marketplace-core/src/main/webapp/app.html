@@ -72,8 +72,10 @@
 				                		<p>Valor: {{result.valor}}</p>
 				                		<p>Proveedor: {{result.producto.proveedor.nombre}}</p>
 				                		<img src="{{result.producto.urlImagen}}" class="gsc-branding-img" srcset="{{result.producto.urlImagen}}" width="200px" height="300px">
-				                		<div class="form-group dark">
-				                			<a id="Search" name="Buy" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
+				                		<div class="form-group dark" ng-if = "Producto.nombre === compras">
+				                			<a id="Search" name="Buy" class="btn btn-primary" 
+				                			ng-class="{active: matchesRoute('Compras/new')}" href="#/Compras/new" data-toggle="modal" data-target="#myModalCompra"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
+				                			<img ng-if="pagoPSE" src="img/logopsenuevo.png" width="50px" height="50px"/>
 				                		</div>	 
 				                </div>
 				            </div>
@@ -123,9 +125,12 @@
                     <td>{{result.nombre}}</td>
                     <td>{{result.valor}}</td> 
                     <td>{{result.proveedor.nombre}}</td>
-                    <td><div class="form-group dark">
-				                			<a id="Search" name="Buy" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
-				                		</div>
+                    <td>
+						<div class="form-group dark" ng-if = "Producto.nombre === compras">
+	                			<a id="Search" name="Buy" class="btn btn-primary" 
+	                			ng-class="{active: matchesRoute('Compras/new')}" href="#/Compras/new" data-toggle="modal" data-target="#myModalCompra"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
+	                			<img ng-if="pagoPSE" src="img/logopsenuevo.png" width="50px" height="50px"/>
+	                		</div>	 
 				    </td>
                 </tr>
             </tbody>
@@ -167,11 +172,11 @@
 					</div>
 				</div>
 			</section>
-      <!-- Modal -->
+      <!-- Modal Admin-->
 			<div id="myModal" class="modal fade" role="dialog">
 			  <div class="modal-dialog">
 			
-			    <!-- Modal content-->
+			    <!-- Modal Admin content-->
 			    <div class="modal-content">
 			      <div class="modal-header">
 			        <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -200,7 +205,40 @@
 			
 			  </div>
 			</div>
-    </div>
+
+
+	<!-- Modal Compra-->
+			<div id="myModalCompra" class="modal fade" role="dialog">
+			  <div class="modal-dialog">
+			
+			    <!-- Modal Admin content-->
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        <div>
+				        <h4 class="modal-title">compras</h4>
+				    </div>
+			      </div>
+			      <div class="modal-body">
+			        <div class="row row-offcanvas row-offcanvas-left">
+			                <!-- main area-->
+			                <div class="col-sm-offset-1 col-xs-12 col-sm-8 well mainarea">
+			                    <div ng-controller="FlashController" class="alert alert-dismissible" ng-class="'alert-' + flash.getMessage().cssClass" role="alert" ng-show="showAlert">
+			                        <button type="button" class="close" ng-click="hideAlert()" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			                        {{flash.getMessage().text}}
+			                    </div>
+			                    <div id="main" ng-view>
+			                    </div>
+			                </div>
+			            </div>
+					      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Salir</button>
+			      </div>
+			    </div>
+			
+			  </div>
+			</div>
    
     
     	<!-- Footer -->
