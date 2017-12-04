@@ -36,6 +36,9 @@ public class InitRest {
 		else if (producto.equals(IConstantesAutenticacion.COMPRAS)) {
 			respuesta.setContexto(IConstantesAutenticacion.CONTEXTO_COMPRAS);
 			respuesta.setDescripcion(IConstantesAutenticacion.DESC_COMPRAS);
+			
+			String pagoPSE = Propiedades.leerPropiedad(IConstantesAutenticacion.PAGO_PSE);
+			respuesta.setPagoPSE(pagoPSE);
 		}
 		return Response.ok(respuesta).build();
 	}

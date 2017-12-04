@@ -58,6 +58,8 @@ public class Producto implements Serializable{
     
     //@Column(name = "valor")
     private String valor;
+	    //@Column(name = "valor")
+    private String urlImagen;
     
     
     /**
@@ -116,6 +118,21 @@ public class Producto implements Serializable{
     public void setValor(String valor) {
         this.valor = valor;
     }
+	
+	  /**
+    * @generated
+    */
+    public String getUrlImagen() {
+        return this.urlImagen;
+    }
+    
+    /**
+    * @generated
+    */
+    public void setUrlImagen(String urlImagen) {
+        this.urlImagen = urlImagen;
+    }
+    
     
 	
 	/*public List<Compra> getCompra(){
