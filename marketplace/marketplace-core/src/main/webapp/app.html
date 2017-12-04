@@ -15,7 +15,7 @@
 				<nav>
 					<ul>
 						<div>
-							<li class="dropdown">
+							<li class="dropdown" ng-if="currentUser && currentUser.user.rol === 'ADMINISTRADOR'">
 						        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Administrar
 						        <span class="caret"></span></a>
 						        <ul class="dropdown-menu">
@@ -26,11 +26,14 @@
 						        </ul>
 						    </li>
 							<li ng-if="currentUser.user.nombre"><a href="#"> <span class="glyphicon glyphicon-user"></span> Bienvenido {{currentUser.user.nombre}}</a></li>
-							<!-- <li><a href="#one">Ofertas</a></li>
-							<li><a href="#two">Búsquedas</a></li>
-							<li><a href="#contact">Contáctanos</a></li> -->
 				 			<li ng-if="currentUser.user.nombre"><div ng-controller="LogoutCtrl"><a ng-click="logout()" >Salir</a></div></li>
-							<li ng-if="!currentUser.user.nombre"><a href="#"><span class="glyphicon glyphicon-user"></span> Regístrate</a></li>
+							<li ng-if="!currentUser.user.nombre" class="dropdown">
+						        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Regístrate
+						        <span class="caret"></span></a>
+						        <ul class="dropdown-menu">
+						          <li><a ng-class="{active: matchesRoute('Usuarios/new')}" href="#/Usuarios/new" data-toggle="modal" data-target="#myModal">Nuevo usuario</a></li>
+						        </ul>
+						    </li>
 				        		<li ng-if="!currentUser.user.nombre"><a href="#"><span class="glyphicon glyphicon-log-in"></span> Ingresa</a></li>
 						</div>
 					</ul>
