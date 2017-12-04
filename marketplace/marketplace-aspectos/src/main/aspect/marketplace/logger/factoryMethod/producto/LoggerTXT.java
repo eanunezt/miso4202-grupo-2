@@ -18,7 +18,7 @@ public class LoggerTXT implements ILogger{
 		try {
 			fw = new FileWriter("../Logger.txt",true);
 			bw = new BufferedWriter(fw);
-			bw.write(txt+"\n");
+			bw.write(txt+System.lineSeparator());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

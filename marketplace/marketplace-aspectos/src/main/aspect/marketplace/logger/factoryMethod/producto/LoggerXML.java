@@ -26,8 +26,8 @@ public class LoggerXML implements ILogger {
 			fw = new FileWriter(f,true);
 			bw = new BufferedWriter(fw);	
 			if(encabezado)
-				bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+"\n");
-			bw.write("<log>"+txt+"</log>"+"\n");
+				bw.write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>"+System.lineSeparator());
+			bw.write("<log>"+txt+"</log>"+System.lineSeparator());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
