@@ -44,7 +44,7 @@ angular.module('marketplace-app').controller('LoginCtrl', ['$rootScope','$scope'
     
     
     $scope.direccionar = function () {
-    	var url = "../" + $localStorage.producto.contexto + "/app.html#/Usuarios/new";
+    	var url = "../" + $localStorage.producto.contexto;
     	location.href=url;
     };
     

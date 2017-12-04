@@ -49,6 +49,11 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
               alert('Error al iniciar la aplicación');
       });  		  
 	  };
+	  
+	  $scope.direccionar = function () {
+	    var url = "../marketplace-autenticacion";
+	    location.href=url;
+	  };
   })
   .controller('NavController', function NavController($scope, $location) {
     $scope.matchesRoute = function(route) {
