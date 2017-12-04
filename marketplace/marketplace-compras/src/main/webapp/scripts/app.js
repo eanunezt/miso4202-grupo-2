@@ -32,7 +32,7 @@ angular.module('marketplace-app',['ngRoute','ngResource','ngStorage'])
     
     // redirect to login page if not logged in and trying to access a restricted page
     $rootScope.$on(	'$locationChangeStart', function (event, next, current) {
-        var publicPages = ['/Usuarios/new', '/Productos'];
+        var publicPages = ['/Usuarios/new', '/Productos', '/app.html', '/index.html', '/app.html#', "", '/'];
         var restrictedPage = publicPages.indexOf($location.path()) === -1;
         if (restrictedPage && !$localStorage.currentUser) {
         	var url = "http://" + $window.location.host + "/marketplace-autenticacion";
