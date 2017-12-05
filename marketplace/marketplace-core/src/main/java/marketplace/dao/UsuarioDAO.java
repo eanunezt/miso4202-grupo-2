@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.ArrayList;
 import javax.persistence.*;
 import javax.ejb.Stateless;
+import javax.annotation.PostConstruct;
+import marketplace.modelo.enums.*;
 
 /**
   *  @generated
@@ -15,6 +17,20 @@ public class UsuarioDAO {
 	@PersistenceContext
     private EntityManager em;
 
+	
+	@PostConstruct
+	public void crearUsuarioAdministrador() {
+		System.out.println("++++++ Post Construct ++++++");		
+		List<Usuario> lu = obtenerTodos();		
+		for(Usuario u :lu) {
+			if(u.getUsuario().equals("admin")) {
+				u.setRol(RolEnum.ADMINISTRADOR);	
+			    actualizar(u);
+			    System.out.println("Actualizo Rol usuario "+u.getUsuario());
+			}
+		}
+		System.out.println("++++++ Termina Post Construct ++++++");
+	}
 	
 	/**
 	* @generated
