@@ -72,11 +72,7 @@
 				                		<p>Producto: {{result.producto.nombre}}</p>
 				                		<p>Valor: {{result.valor}}</p>
 				                		<p>Proveedor: {{result.producto.proveedor.nombre}}</p>
-				                		<img src="{{result.producto.urlImagen}}" class="gsc-branding-img" srcset="{{result.producto.urlImagen}}" width="200px" height="300px">
-				                		<div class="form-group dark" ng-if = "Producto.nombre === compras">
-				                			<a id="Search" name="Buy" class="btn btn-primary" 
-				                			ng-class="{active: matchesRoute('Compras/new')}" href="#/Compras/new" data-toggle="modal" data-target="#myModalCompra"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
-				                		</div>	 
+				                		<img src="{{result.producto.urlImagen}}" class="gsc-branding-img" srcset="{{result.producto.urlImagen}}" width="200px" height="300px">	 
 				                </div>
 				            </div>
 				        </div>
@@ -116,7 +112,6 @@
                     <th>Nombre</th>
                     <th>Valor</th>
                     <th>Proveedor</th>
-                    <th>Comprar</th>
                 </tr>
             </thead>
             <tbody id="search-results-body">
@@ -125,13 +120,6 @@
                     <td>{{result.nombre}}</td>
                     <td>{{result.valor}}</td> 
                     <td>{{result.proveedor.nombre}}</td>
-                    <td>
-						<div class="form-group dark" ng-if = "Producto.nombre === compras">
-	                			<a id="Search" name="Buy" class="btn btn-primary" 
-	                			ng-class="{active: matchesRoute('Compras/new')}" href="#/Compras/new" data-toggle="modal" data-target="#myModalCompra"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a>
-	                			<img ng-if="pagoPSE" src="img/logopsenuevo.png" width="50px" height="50px"/>
-	                		</div>	 
-				    </td>
                 </tr>
             </tbody>
         </table>
